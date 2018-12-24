@@ -1,0 +1,14 @@
+
+{% if data %}
+
+{% for object in data %}
+
+
+<hr>
+<h5><a href="{{url_for( 'get_object_info',table=table,pk=object.id )}}">{{object.nombre}} </a>  </h5>
+<hr>
+
+{% endfor %}
+
+
+{% endif %}

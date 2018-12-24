@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+
+
+
+{% if data %}
+
+
+Nombre: {{data.nombre}} <br>
+
+Descripcion: {% if data.descripcion %} {{data.descripcion}} {% else %} Ninguna {% endif %} <br>
+
+
+
+Universo: {% if data.universo %} <a href="{{url_for( 'get_object_info',table='Universo',pk=data.universo.id )}}">{{data.universo.nombre}} </a> {% else %} Desconocido {% endif %} <br>
+
+
+
+
+Localizacion:  
+
+{% if data.localizacion %}
+
+{% for lugar in data.localizacion %}
+
+
+<a href="{{url_for( 'get_object_info',table='Lugar',pk=lugar.id )}}">{{lugar.nombre}} </a>
+{% if lugar != data.localizacion | last %}
+,
+{% endif %}
+
+{% endfor %}
+
+{% else %}
+Desconocida
+ 
+{% endif %}  <br>
+
+
+
+
+
+Actualmente activo: {% if data.activo == True %} Si {% elif data.activo == False %} No {% else %} Desconocido {% endif %} <br>
+
+</div>
+{% endif %}
+{% endblock content %}

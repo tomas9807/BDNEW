@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if data %}
+<div class="container-fluid">
+<h3>{{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %} 
+        {% if data.universo %} <a href="{{url_for( 'get_object_info',table='Universo',pk=data.universo.id )}}">({{data.universo.nombre}}) </a> {% endif %}
+    </h3>  
+    <hr>
+<div class="row">
+
+<div class="col-sm-6 ml-5 text-justify">
+
+    <h4>Biografia</h4>
+    {{data.biografia}}
+
+</div>
+
+
+
+
+
+<div class="col-sm-3 ml-5 text-justify border rounded ">
+
+<h4 class="mt-3 text-center">{{data.nombre}}</h4>
+
+<img style="width: 250px; height:350px;" class="rounded mx-auto d-block" src="{{ url_for('static',filename='personajes/' + data.foto_path) }}" alt=""> <hr>
+
+<b> Nombre real: </b> {{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %} <hr>
+
+<b>Otros Alias:</b> 
+{% if data.otros_alias %} 
+
+{% for alias in data.otros_alias %}
+
+<span style="font-size: 13px;"> {{alias.nombre}} </span>
+{% if alias != data.otros_alias | last %}
+,
+{% endif %}
+
+{% endfor %}
+
+{% else %}
+ninguno
+
+{% endif %}  <hr>
+
+
+<b>Genero:</b> {% if data.genero=='M' %} masculino {% elif data.genero=='F' %} femenino {% else %} desconocido {% endif %}  <hr>
+
+<b>Universo:</b> {% if data.universo %} 
+<a href="{{url_for( 'get_object_info',table='Universo',pk=data.universo.id )}}">{{data.universo.nombre}} </a>
+{% else %}
+desconocido
+{% endif %}  <hr>
+
+<b>Lugar de nacimiento:</b> {% if data.lugar_nacimiento %} 
+
+{% for lugar in data.lugar_nacimiento %}
+
+
+<a href="{{url_for( 'get_object_info',table='Lugar',pk=lugar.id )}}">{{lugar.nombre}} </a>
+{% if lugar != data.lugar_nacimiento | last %}
+,
+{% endif %}
+
+{% endfor %}
+
+{% else %}
+desconocido
+
+{% endif %}  <hr>
+
+
+<b>Afiliaciones:</b> 
+{% if data.afiliaciones %} 
+
+{% for obj in data.afiliaciones %}
+
+
+<a href="{{url_for( 'get_object_info',table='Afiliacion',pk=obj.id )}}" style="font-size: 13px;">{{obj.nombre}} </a>
+{% if obj != data.afiliaciones  | last %}
+,
+{% endif %}
+
+{% endfor %}
+{% else %}
+ninguna
+
+{% endif %}   <hr>
+
+
+
+<b>Parientes:</b> 
+{% if data.parientes_1 %} 
+
+{% for par in data.parientes_1 %}
+
+
+{{par.nombre}} 
+{% if par != data.parientes_1  | last %}
+,
+{% endif %}
+
+{% endfor %}
+
+
+{% endif %}  
+
+{% if data.parientes_2 %} 
+
+{% for par in data.parientes_2 %}
+
+
+{{par.nombre}} 
+{% if par != data.parientes_2  | last %}
+,
+{% endif %}
+
+{% endfor %}
+
+
+
+{% endif %}  
+
+
+<hr>
+
+
+<b>Identidad:</b> {{data.identidad}} <hr>
+
+<b>Estado civil:</b> {{data.estado_civil}} <hr>
+
+<b>Moralidad:</b> {{data.moralidad}} <hr>
+
+<b>Altura:</b> {% if data.altura %} 
+{{data.altura}}mts
+{% if data.altura_opcional %} - {{data.altura_opcional}}mts {% endif %} 
+{% else %}
+desconocida
+{% endif %}  <hr>
+
+<b>Peso:</b> {% if data.peso %} 
+{{data.peso}}kg
+{% if data.peso_opcional %} - {{data.peso_opcional}}kg {% endif %} 
+{% else %}
+desconocido
+{% endif %}  <hr>
+
+
+<b>Color de ojos: </b>{% if data.color_ojos %} 
+{{data.color_ojos.nombre}}
+{% else %}
+sin color
+{% endif %}  <hr>
+
+
+<b>Color de pelo:</b> {% if data.color_pelo %} 
+{{data.color_pelo.nombre}}
+{% else %}
+sin color
+{% endif %}  <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+</div>
+{% endif %}
+
+{% endblock content %}
