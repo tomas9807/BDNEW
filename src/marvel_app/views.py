@@ -30,7 +30,7 @@ def get_object_info(table,pk=None):
                 data['color_pelo'] = api_bd.select_id_plus_name('Color',pk=data.get('color_pelo_id'),dictionary=True)[0]
             else: data['color_pelo'] = None
             if data.get('id_universo'):
-                data['universo'] = api_bd.select_id_plus_name('Universo',pk=data.get('color_pelo_id'),dictionary=True)[0]
+                data['universo'] = api_bd.select_id_plus_name('Universo',pk=data.get('id_universo'),dictionary=True)[0]
             else: data['universo'] = None
             if data.get('id_lugar_nacimiento'):
                 data['lugar_nacimiento'] = api_bd.select_recursively_child_parent(
@@ -62,44 +62,7 @@ def get_object_info(table,pk=None):
             )
             """,dictionary=True)
 
-            pc =  api_bd.select_objects('Personaje_Competidor',None,'id')
-            pnc =  api_bd.select_objects('Personaje_NoCompetidor',None,'id')
          
-            parientes_1 = api_bd.select_query(f""" 
-            SELECT a.id,a.nombre 
-            FROM  Personaje_Competidor a
-            WHERE a.id 
-            IN ({','.join(str(p) for p in pc[0])})
-            AND (
-            a.id  IN (
-                SELECT id_competidor1
-                FROM Relacion 
-                WHERE tipo_relacion='pariente'
-            )
-            OR a.id IN (
-                SELECT id_personaje1
-                FROM Relacion 
-                WHERE tipo_relacion='pariente'
-            ))
-            """,dictionary=True)
-            
-            parientes_2 = api_bd.select_query(f""" 
-            SELECT a.id,a.nombre 
-            FROM  Personaje_Competidor a
-            WHERE a.id 
-            IN ({','.join(str(p) for p in pnc[0])})
-            AND (
-            a.id  IN (
-                SELECT id_competidor1
-                FROM Relacion 
-                WHERE tipo_relacion='pariente'
-            )
-            OR a.id IN (
-                SELECT id_personaje1
-                FROM Relacion 
-                WHERE tipo_relacion='pariente'
-            ))
-            """,dictionary=True)
 
             afiliaciones = api_bd.select_query(f""" 
             SELECT id,nombre 
@@ -112,6 +75,97 @@ def get_object_info(table,pk=None):
             )
             """,dictionary=True)
 
+            parientes = api_bd.select_query(f""" 
+            SELECT 
+            id_competidor_padre,
+            id_competidor_hijo,
+            id_personaje_padre,
+            id_personaje_hijo,
+            tipo_relacion,
+            tipo_relacion_pariente 
+            FROM Relacion
+            WHERE (id_competidor_padre={pk}
+            OR  id_competidor_hijo={pk})
+            AND tipo_relacion='pariente'
+            """,dictionary=True)
+            if parientes:
+
+                for rela in parientes:
+                    if rela['id_competidor_padre']:
+                        rela['padre'] = api_bd.select_query(
+                            f""" 
+                            SELECT id,nombre,nombre_real,apellido_real,genero,id_universo
+                            FROM Personaje_Competidor
+                            WHERE id={rela['id_competidor_padre']}
+                            """,dictionary=True)[0]
+                        rela['padre_tipo'] = 'pc'
+                    else:
+                        rela['padre'] = api_bd.select_query(
+                            f""" 
+                            SELECT id,nombre,nombre_real,apellido_real,genero,id_universo
+                            FROM Personaje_NoCompetidor
+                            WHERE id={rela['id_personaje_padre']}
+                            """,dictionary=True)[0]
+                        rela['padre_tipo'] = 'pnc'
+
+                    if rela['id_competidor_hijo']:
+                            rela['hijo'] = api_bd.select_query(
+                            f""" 
+                            SELECT id,nombre,nombre_real,apellido_real,genero,id_universo
+                            FROM Personaje_Competidor
+                            WHERE id={rela['id_competidor_hijo']}
+                            """,dictionary=True)[0]
+                            rela['hijo_tipo'] = 'pc'
+                    else:
+                        rela['hijo'] = api_bd.select_query(
+                        f""" 
+                        SELECT id,nombre,nombre_real,apellido_real,genero,id_universo
+                        FROM Personaje_NoCompetidor
+                        WHERE id={rela['id_personaje_hijo']}
+                        """,dictionary=True)[0]
+                        rela['hijo_tipo'] = 'pnc'
+
+                    if  str(rela['padre']['id_universo']) == str(data['id_universo']) and  str(rela['padre']['nombre']) == str(data['nombre']):
+                        genero = rela['hijo']['genero']
+                        if rela['tipo_relacion_pariente']=='abuelo':
+                            if genero=='F':
+                                rela['tipo_relacion_pariente']='nieta'  
+                            else:
+                                 rela['tipo_relacion_pariente']='nieto'
+                        elif rela['tipo_relacion_pariente']=='tio':
+                            if genero=='F':
+                                rela['tipo_relacion_pariente']='sobrina' 
+                            else: 
+                                rela['tipo_relacion_pariente']='sobrino'
+                        elif rela['tipo_relacion_pariente']=='padre':
+                            if genero=='F':
+                                rela['tipo_relacion_pariente']='hija'  
+                            else:
+                                 rela['tipo_relacion_pariente']='hijo'
+                        rela['pariente'] = rela['hijo']
+                        rela['tipo'] = rela['hijo_tipo']
+          
+                    else:
+                        genero = rela['padre']['genero']
+                        if rela['tipo_relacion_pariente']=='abuelo' and genero=='F': 
+                            rela['tipo_relacion_pariente']='abuela'
+                        elif rela['tipo_relacion_pariente']=='tio' and genero=='F': 
+                            rela['tipo_relacion_pariente']='tia'
+                        elif rela['tipo_relacion_pariente']=='padre' and genero=='F': 
+                            rela['tipo_relacion_pariente']='madre'
+                        elif rela['tipo_relacion_pariente']=='hermano' and genero=='F': 
+                            rela['tipo_relacion_pariente']='hermana'
+                        elif rela['tipo_relacion_pariente']=='primo' and genero=='F': 
+                            rela['tipo_relacion_pariente']='prima'
+                        rela['pariente'] = rela['padre'] 
+                        rela['tipo'] = rela['padre_tipo']
+                        
+                   
+                        
+                   
+                    
+            data['parientes'] = parientes or None
+                        
 
             if afiliaciones:
                 data['afiliaciones'] = afiliaciones
@@ -123,19 +177,140 @@ def get_object_info(table,pk=None):
                 data['profesiones'] = profesiones
             else:
                 data['profesiones'] = None
-            if parientes_1:
-                data['parientes_1'] = parientes_1
-            else:
-                data['parientes_1'] = None
-            if parientes_2:
-                data['parientes_2'] = parientes_2
-            else:
-                data['parientes_2'] = None
+
+            habilidades = api_bd.select_query(f""" 
+            SELECT ha.id,ha.nombre,comp.valor
+            
+            FROM Habilidad ha,Habilidad_Competidor comp
+            WHERE comp.id_competidor={pk}
+            AND ha.id =  comp.id_habilidad
+
+            
+            """,dictionary=True)
+            for hab in habilidades:
+                if hab['valor']<4:
+                    hab['width'] = int((hab['valor'] + 1 )* 10)
+                elif hab['valor']<6:
+                    hab['width'] = int((hab['valor'] + 2 )* 10)
+                else:
+                    hab['width'] = int((hab['valor'] + 3 )* 10)
+                print( hab['valor'])
+                print( hab['width'])
+            data['habilidades'] = habilidades
             
             
 
 
         return render_template('competidor_info.html',data=data,table=table)
+
+    elif table=='Personaje_NoCompetidor':
+        data = api_bd.select_objects(table,pk,dictionary=True) 
+        if data: 
+            data = data[0]
+            if data.get('id_universo'):
+                data['universo'] = api_bd.select_id_plus_name('Universo',pk=data.get('id_universo'),dictionary=True)[0]
+            else: data['universo'] = None
+            if data.get('id_lugar_nacimiento'):
+                data['lugar_nacimiento'] = api_bd.select_recursively_child_parent(
+                'Lugar',
+                data.get('id_lugar_nacimiento'),
+                'id','nombre',
+                dictionary=True
+                )
+            else:
+                data['lugar_nacimiento'] = None
+            parientes = api_bd.select_query(f""" 
+            SELECT 
+            id_competidor_padre,
+            id_competidor_hijo,
+            id_personaje_padre,
+            id_personaje_hijo,
+            tipo_relacion,
+            tipo_relacion_pariente 
+            FROM Relacion
+            WHERE (id_personaje_padre={pk}
+            OR  id_personaje_hijo={pk})
+            AND tipo_relacion='pariente'
+            """,dictionary=True)
+            if parientes:
+
+                for rela in parientes:
+                    if rela['id_competidor_padre']:
+                        rela['padre'] = api_bd.select_query(
+                            f""" 
+                            SELECT *
+                            FROM Personaje_Competidor
+                            WHERE id={rela['id_competidor_padre']}
+                            """,dictionary=True)[0]
+                        rela['padre_tipo'] = 'pc'
+                    else:
+                        rela['padre'] = api_bd.select_query(
+                            f""" 
+                            SELECT *
+                            FROM Personaje_NoCompetidor
+                            WHERE id={rela['id_personaje_padre']}
+                            """,dictionary=True)[0]
+                        rela['padre_tipo'] = 'pnc'
+
+                    if rela['id_competidor_hijo']:
+                            rela['hijo'] = api_bd.select_query(
+                            f""" 
+                            SELECT *
+                            FROM Personaje_Competidor
+                            WHERE id={rela['id_competidor_hijo']}
+                            """,dictionary=True)[0]
+                            rela['hijo_tipo'] = 'pc'
+                    else:
+                        rela['hijo'] = api_bd.select_query(
+                        f""" 
+                        SELECT *
+                        FROM Personaje_NoCompetidor
+                        WHERE id={rela['id_personaje_hijo']}
+                        """,dictionary=True)[0]
+                        rela['hijo_tipo'] = 'pnc'
+                
+                    if  str(rela['padre']['id_universo']) == str(data['id_universo']) and  str(rela['padre']['nombre_real']) == str(data['nombre_real']) and  str(rela['padre']['apellido_real']) == str(data['apellido_real']) and  str(rela['padre']['nombre']) == str(data['nombre']) and  str(rela['padre']['id_lugar_nacimiento']) == str(data['id_lugar_nacimiento']):
+                        genero = rela['hijo']['genero']
+                        if rela['tipo_relacion_pariente']=='abuelo':
+                            if genero=='F':
+                                rela['tipo_relacion_pariente']='nieta'  
+                            else:
+                                 rela['tipo_relacion_pariente']='nieto'
+                        elif rela['tipo_relacion_pariente']=='tio':
+                            if genero=='F':
+                                rela['tipo_relacion_pariente']='sobrina' 
+                            else: 
+                                rela['tipo_relacion_pariente']='sobrino'
+                        elif rela['tipo_relacion_pariente']=='padre':
+                            if genero=='F':
+                                rela['tipo_relacion_pariente']='hija'  
+                            else:
+                                 rela['tipo_relacion_pariente']='hijo'
+                        
+                        rela['pariente'] = rela['hijo']
+                        rela['tipo'] = rela['hijo_tipo']
+                       
+                    else:
+                        genero = rela['padre']['genero']
+                        if rela['tipo_relacion_pariente']=='abuelo' and genero=='F': 
+                            rela['tipo_relacion_pariente']='abuela'
+                        elif rela['tipo_relacion_pariente']=='tio' and genero=='F': 
+                            rela['tipo_relacion_pariente']='tia'
+                        elif rela['tipo_relacion_pariente']=='padre' and genero=='F': 
+                            rela['tipo_relacion_pariente']='madre'
+                        elif rela['tipo_relacion_pariente']=='hermano' and genero=='F': 
+                            rela['tipo_relacion_pariente']='hermana'
+                        elif rela['tipo_relacion_pariente']=='primo' and genero=='F': 
+                            rela['tipo_relacion_pariente']='prima'
+                        rela['pariente'] = rela['padre'] 
+                        rela['tipo'] = rela['padre_tipo']
+                   
+                        
+
+            
+            data['parientes'] = parientes or None
+
+        return render_template('nocompetidor_info.html',data=data,table=table)
 
     elif table=='Afiliacion':
         data = api_bd.select_query(f""" 
@@ -182,10 +357,33 @@ def get_object_info(table,pk=None):
                 dictionary=True
                 )
             data['localizacion'] = localizacion
+
+        
+
             
 
         return render_template('base_operacion_info.html',data=data,table=table)
 
+    elif table=='Universo':   
+        data_pc = api_bd.select_query(f""" 
+            SELECT id,nombre,nombre_real,apellido_real
+            FROM Personaje_Competidor
+            WHERE  id_universo={pk}
+            """,dictionary=True)
+        data_pnc = api_bd.select_query(f""" 
+            SELECT id,nombre,nombre_real,apellido_real
+            FROM Personaje_NoCompetidor
+            WHERE  id_universo={pk}
+            """,dictionary=True)
+        data_bo = api_bd.select_query(f""" 
+            SELECT id,nombre
+            FROM Base_Operacion
+            WHERE  id_universo={pk}
+            """,dictionary=True)
+        uni_info =  api_bd.select_objects(table,pk,'nombre','descripcion',dictionary=True)[0]
+        data = {'pc':data_pc,'pnc':data_pnc,'bo':data_bo,'uni_info':uni_info}
+        print(data)
+        return render_template('universo_info.html',data=data,table=table)
     else:
         data = api_bd.select_objects(table,pk,'nombre','descripcion',dictionary=True)[0]
         return render_template('general_info.html',data=data,table=table)

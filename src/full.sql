@@ -658,10 +658,10 @@ INSERT INTO `Personaje_NoCompetidor` VALUES
 (17,'Fenris','Wolf',NULL,NULL,'M',1,69),
 (18,'Jormungand',NULL,'Midgard Serpent',NULL,NULL,1,69),
 (19,'Ramades',NULL,NULL,NULL,'M',1,37),
-(20,'Marcus','Kang XXIII','Scarlet Centurion',1,'M',16,37)
+(20,'Marcus','Kang XXIII','Scarlet Centurion',1,'M',16,37),
 (21,'Nathaniel',' Richards',NULL,0,'M',16,22),
 (22,'Evelyn',' Richards',NULL,0,'F',16,22),
-(23,'Thomas',' Duncan',NULL,1,'M',16,22),
+(23,'Thomas',' Duncan',NULL,1,'M',16,22)
 
 
 ;

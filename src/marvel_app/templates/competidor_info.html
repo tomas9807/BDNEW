@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if data %}
-<div class="container-fluid">
+<div class="container-fluid text-center">
 <h3>{{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %} 
         {% if data.universo %} <a href="{{url_for( 'get_object_info',table='Universo',pk=data.universo.id )}}">({{data.universo.nombre}}) </a> {% endif %}
     </h3>  
@@ -9,9 +9,59 @@
 <div class="row">
 
 <div class="col-sm-6 ml-5 text-justify">
-
+        
     <h4>Biografia</h4>
+    <hr>
     {{data.biografia}}
+    <br> <br>
+   
+    <h4>Poderes y Habilidades</h4>
+    <hr>
+   <div class="floatright">
+       <table cellpadding="0" cellspacing="0" style="border-left:1px solid grey;border-right:1px solid grey;border-top:1px solid grey;border-bottom:1px solid grey;">
+        <tbody>
+            <tr>
+        <td colspan="2" style="text-align:center;background:grey;color:white;"><big><i><b>Cuadro de habilidades</b></i></big>&nbsp;<sup id="cite_ref-81" class="reference">
+        </td>
+        </tr>
+        
+        {% for hab in data.habilidades %}
+
+
+        <tr style="height:32px;">
+
+        <td style="height:30px;padding-left:3px;"><a class="pr-5" href="#" title="Power Grid">{{hab.nombre}}</a></td>
+        <td style="height:30px;position:absolute;z-index:3;border-left:1px solid black;border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid grey;">
+            
+        <table cellspacing="0" cellpadding="0" style="width: 300px; border:none;">
+         
+        <tbody><tr>
+            {% if hab.valor!=7 %}
+          <td style="text-align: right; height: 30px; width: {{hab.width}}%; background-color: #a2a2ac"></td>
+          <td style="text-align: left; width: 57.142857142857%; background-color:"><font color="black">&nbsp;{{hab.valor}}</font></td>
+          {% else %}
+          <td style="text-align: right; height: 30px; width: {{hab.width}}%; background-color: #2145b8"><font color="#FFFFFF">{{hab.valor}}&nbsp;</font></td>
+          <td style="text-align: left; width: 0%; background-color:"></td>
+          {% endif %}
+         </tr>
+        </tbody>
+         </table>
+        
+        </td>
+
+        </tr>
+<!--         
+        no touch
+         -->
+
+         {% endfor %}
+        <tr style="height:30px;">
+        <td></td>
+        <td style="width:301px;height:30px;position:relative;text-align:left;"></td>
+        </tr></tbody></table></div>
+      
+
+
 
 </div>
 
@@ -91,36 +141,53 @@ ninguna
 
 
 <b>Parientes:</b> 
-{% if data.parientes_1 %} 
+{% if data.parientes %} 
 
-{% for par in data.parientes_1 %}
+{% for par in data.parientes %}
 
 
-{{par.nombre}} 
-{% if par != data.parientes_1  | last %}
+
+{% if par.pariente.apellido_real %}
+
+<a 
+{% if par.pariente.tipo=='pc' %}
+href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.pariente.id )}}" 
+{% else %}
+href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.pariente.id )}}" 
+{% endif %}
+
+style="font-size: 13px;">
+    
+    {{par.pariente.nombre_real}} {{par.pariente.apellido_real}} ({{par.tipo_relacion_pariente}})</a>
+
+
+{% else %}
+<a 
+{% if par.pariente.tipo=='pc' %}
+href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.pariente.id )}}" 
+{% else %}
+href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.pariente.id )}}" 
+{% endif %}
+ style="font-size: 13px;">
+ {{par.pariente.nombre_real}} ({{par.tipo_relacion_pariente}})</a>
+
+
+{% endif %}
+
+{% if par != data.parientes | last %}
 ,
 {% endif %}
+
 
 {% endfor %}
 
 
-{% endif %}  
-
-{% if data.parientes_2 %} 
-
-{% for par in data.parientes_2 %}
-
-
-{{par.nombre}} 
-{% if par != data.parientes_2  | last %}
-,
-{% endif %}
-
-{% endfor %}
+{% else %}
+ninguno
+{% endif %} 
 
 
 
-{% endif %}  
 
 
 <hr>

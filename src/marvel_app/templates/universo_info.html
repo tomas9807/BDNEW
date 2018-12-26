@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+
+
+
+{% if data %}
+
+
+Nombre: {{data.uni_info.nombre}} <br>
+
+Descripcion: {% if data.uni_info.descripcion %} {{data.uni_info.descripcion}} {% else %} Ninguna {% endif %} <br>
+
+Asociado con: 
+    <br> <br>
+    {% if data.pc or data.pnc or data.bo %}
+      
+        {% if data.pc %}
+        <b>Personajes Competidores</b> <hr>
+        <ul>
+        {% for pc in data.pc %}
+
+
+
+            {% if pc.apellido_real %}
+
+               <li> <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=pc.id )}}"  style="font-size: 13px;">
+                    
+                    {{pc.nombre_real}} {{pc.apellido_real}} ({{pc.nombre}})</a> </li>
+                {% else %}
+                <li> <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=pc.id )}}"  style="font-size: 13px;">
+                {{pc.nombre_real}} ({{pc.nombre}})</a> </li>
+
+            
+            {% endif %}
+        
+                       
+
+
+        {% endfor %}
+
+      
+    </ul>
+        {% endif %}
+
+        {% if data.pnc %}
+        <b>Personajes No Competidores</b> <hr>
+        <ul> 
+        {% for pc in data.pnc %}
+      
+      
+
+
+        {% if pc.apellido_real %}
+
+           <li> <a href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=pc.id )}}"  style="font-size: 13px;">
+                
+                {{pc.nombre_real}} {{pc.apellido_real}} </a></li>
+            {% else %}
+            <li> <a href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=pc.id )}}"  style="font-size: 13px;">
+            {{pc.nombre_real}} </a></li>
+
+
+        {% endif %}
+      
+                   
+        
+
+    {% endfor %}
+    {% endif %}
+            </ul> 
+    {% if data.bo %}
+    <b>Bases de Operaciones</b> <hr>
+    <ul>
+    {% for pc in data.bo %}
+
+     
+
+   
+       <li>   <a href="{{url_for( 'get_object_info',table='Base_Operacion',pk=pc.id )}}"  style="font-size: 13px;">
+            
+            {{pc.nombre}} </a></li>
+       
+
+            
+  
+
+
+              
+{% endfor %}
+</ul>
+{% endif %}
+
+
+
+    {% else %}
+    Nada
+
+    {% endif %}
+
+
+{% endif %}
+
+</div>
+
+{% endblock content %}
