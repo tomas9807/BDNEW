@@ -679,8 +679,7 @@ CREATE TABLE `Poder` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(256) NOT NULL,
   `descripcion` text,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `nombre` (`nombre`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -690,7 +689,93 @@ CREATE TABLE `Poder` (
 
 LOCK TABLES `Poder` WRITE;
 /*!40000 ALTER TABLE `Poder` DISABLE KEYS */;
-INSERT INTO `Poder` VALUES (1,'Chi Augmentation','Through concentration, Rand can harness his mystical chi to augment his physical and mental capabilities to increased levels.'),(2,'Iron Fist Punch','By summoning his chi and focusing it into his hand, he can draw upon the superhuman energy derived from the heart of the mystic serpent Shou-Lao and make his fist inhumanly powerful and super humanly resistant to injury and pain on a superhuman scale. '),(3,'Nervous System Control','complete control over his nervous system enabling him to deaden himself to pain, resist the effects of drugs or poisons, and slow down the rate at which he bleeds. He also is able pass lie detector tests.'),(4,'Hypnotism',' After obtaining The Book of the Iron Fist from Orson Randall, Rand has learned how to create various illusions and make his foes see what he wants them to see.'),(5,'Mind Fusion',' He can use his power to temporarily fuse his consciousness with another person, resulting in a sharing of knowledge, emotions, and memories.'),(6,'Energy Absorption','absorbes energy directed at himself and channeled it to augment his own power.'),(7,'Energy Generation','Iron Fist can project his Chi into a ranged attack, sort of like an energy blast. Rand can also transfer his Chi into other objects to accelerate them or give them more power.'),(8,'Energy Detection',' can use his power to temporarily fuse his consciousness with another person, resulting in a sharing of knowledge, emotions, and memories.'),(9,'Dimensional Travel',' Under certain circumstances, his chi can be focused to create nexus points between dimensions.'),(10,'Heightened Awareness',' Demonstrated the ability to detect a threat to his well-being in his immediate vicinity before they commit the action; such as (Iron Fist Killer)'),(11,'Enhanced Senses',' has unusually keen eyesight, but it is unclear if it extends to superhuman level. He can focus his hearing so intensely that he can hear sweat rolling down someones face.'),(12,'Organic Webbing',' When he was transported to another dimension together with the Eye of Agamotto, Doctor Strange\'s mentor, the Ancient One appeared to him.'),(13,'Spider-Sense',' When he was transported to another dimension together with the Eye of Agamotto, Doctor Strange\'s mentor, the Ancient One appeared to him.'),(14,'Superhuman Abilities',' When he was transported to another dimension together with the Eye of Agamotto, Doctor Strange\'s mentor, the Ancient One appeared to him.'),(15,'Wall-Crawling',' When he was transported to another dimension together with the Eye of Agamotto, Doctor Strange\'s mentor, the Ancient One appeared to him.');
+INSERT INTO `Poder` VALUES 
+(1,'Chi Augmentation', "Through concentration, Rand can harness his mystical chi to augment his physical and mental capabilities to increased levels. He initially could augment his physical prowess to the non-superhuman level of the finest possible human specimen. After further study with the Book of the Iron Fist, he has since reached truly superhuman levels of physical activity."),
+(2,'Iron Fist Punch', "By summoning his chi and focusing it into his hand, he can draw upon the superhuman energy derived from the heart of the mystic serpent Shou-Lao and make his fist inhumanly powerful and super humanly resistant to injury and pain on a superhuman scale. "),
+(3,'Nervous System Control', "Rand has complete control over his nervous system enabling him to deaden himself to pain, resist the effects of drugs or poisons, and slow down the rate at which he bleeds."),
+(4,'Hypnotism', "After obtaining The Book of the Iron Fist from Orson Randall, Rand has learned how to create various illusions and make his foes see what he wants them to see."),
+(5,'Mind Fusion' ,"He can use his power to temporarily fuse his consciousness with another person, resulting in a sharing of knowledge, emotions, and memories."),
+(6,'Energy Absorption',"At times, Rand has absorbed energy directed at himself and channeled it to augment his own power."),
+(7,'Energy Generation', "Iron Fist can project his Chi into a ranged attack, sort of like an energy blast. Rand can also transfer his Chi into other objects to accelerate them or give them more power."),
+(8,'Energy Detection', "Capable of detecting energy signatures."),
+(9,'Dimensional Travel', "Under certain circumstances, his chi can be focused to create nexus points between dimensions."),
+(10,'Heightened Awareness', "Demonstrated the ability to detect a threat to his well-being in his immediate vicinity before they commit the action; such as (Iron Fist Killer) and possesses enhanced intuition."),
+(11,'Enhanced Senses', "Rand has unusually keen eyesight, but it is unclear if it extends to superhuman level. He can focus his hearing so intensely that he can hear sweat rolling down someones face"),
+(12,'Empathy'," Rand has the ability to sense and read the emotions/feelings/intentions of people and animals, can broadcast his own feelings in order to influence other people and/or animals emotions psionically."),
+(13,'Enhanced Speed',"He can increase his speed allowing him to dodge or catch bullets. Without the use of chi, he can run up to 35 mph."),
+(14,'Enhanced Reflexes', "Rands reflexes is enhanced to greater levels than normal humans. He can react fast enough to catch bullets."),
+(15,'Enhanced Durability', "Rand can generate a chi-based aura radiating from his body to protect himself from energy based attacks to a varied degree, and make himself more resilient against physical damage."),
+(16,'Enhanced Healing', "If he sustains injury or illness, Rand can focus his chi for the purposes of healing his injuries."),
+(17,'Superhuman Longevity', "Possibility of a slowed aging process much like his predecessor Orson Randall."),
+(18,'Environmental Adaptation', "Through focus and meditation, Danny can sustain himself for extended periods of time in extreme temperature environments"),
+(19,'Magic Immunity'," When he was transported to another dimension together with the Eye of Agamotto, Doctor Strange's mentor, the Ancient One appeared to him."),
+-- daniel rand
+
+(20,'Organic Webbing',"Spider-Man is able to shoot organic webbing out of his wrists."),
+(21,'Spider-Sense',"Spider-Man has a spider-sense, which warns him of dangers."),
+(22,'Superhuman Abilities',"He is enhanced physical abilities - strength, speed, agility, healing factor and endurance."),
+(23,'Wall-Crawling',"He can stick to walls, however Peter seems to prefer a type of parkour over clinging to the walls themselves."),
+-- spiderman man
+
+(24,'Hyper-Intelligence',"Mister Fantastic has made various breakthroughs in fields such as science and technology."),
+(25,'Plasticity',"Mister Fantastic possesses the ability to convert the mass of his entire body into a highly malleable state at will. How his body's respiration and circulatory systems function at these distorted extremes is as yet unknown. Mister Fantastic can alter his form in a matter of seconds, often much less (depending on the complexity of the shape), and revert to his normal humanoid shape within a similar time. The greater the distance he stretches or the more extended the size of the object he becomes, the weaker his overall strength becomes. Mister Fantastic's transformation to a malleable state is reflexive and nearly instantaneous: if he was at his normal form and taken unaware by machine gun fire, his body would still absorb the bullets' impact through radical deformation. In fact, it was revealed that is was Mr. Fantastic, despite being in a weakened state, who protected all the heroes other than Hulk from the impact of the 150 billion ton mountain falling on them before the Jade Giant caught the mountain, although the strain caused him to pass out. Mister Fantastic's skin is virtually impervious to laceration or punctures unless he willfully relaxes his reflexive control over small areas of his body. In that case, scalpels and ordinary needles can penetrate his skin."),
+(26,'Dense Flesh',"Due to the great malleability and elasticity of his molecular structure, Mister Fantastic is able to absorb the impact of any type of man-made ballistic projectile by deforming his body along the path of the projectile's trajectory at the point of initial impact."),
+(27,'Contain Explosions',"Mister Fantastic may use his elastic form to contain explosions by enveloping them and allowing their force to expand him. He can enclose and absorb the energy of a large explosive, on the order of 8 to 12 pounds of TNT (excluding exotic, high density explosives). Such shocks to his system are physically exhausting."),
+(28,'Redirect Projectiles',"After his body absorbs the kinetic energy of a ballistic projectile's impact, Mister Fantastic can expel the object back along its trajectory by flexing his body like a trampoline if he is adequately braced."),
+(29,'Elongation',"Mister Fantastic can extend his limbs, torso, or neck to great distances: the maximum length he can distend before his body segments become painful is about 1,500 feet. (Although he can extend discrete body parts, such as a single finger, an ear, or an eye, he seldom if ever isolates such parts in his elongations."),
+(30,'Grappling',"Mister Fantastic may restrain opponents very efficiently by using his elastic form to entangle them."),
+(31,'Movement',"Mister Fantastic can move at great speeds by stretching to his destination."),
+(32,'Shape Changing',"Mister Fantastic can stretch, deform, expand, or compress his entire body or parts into any contiguous shape he can imagine for a variety of uses."),
+(33,'Imitation',"Mister Fantastic may alter his basic physical features, allowing him to take on the appearance of any other man with similar hair and skin tone. One time, Mister Fantastic actually increased his size and mass density, in effect bulking his body to Thing-like proportions while increasing his strength to the same levels as well. The force of his strikes was enough to stagger even Onslaught."),
+(34,'Canopy, Parachute or Sheath',"Mister Fantastic can extend his body in two directions, creating a canopy, parachute, or sheath, its thickness determined by the extent of its distention."),
+(35,'Gliding',"Mister Fantastic can transform himself into aerodynamic shapes such as parachutes or hang-gliders. In this form he can support an additional 1000 pounds (enough to hold the rest of Fantastic Four, even the Thing)."),
+(36,'Cushion',"Mister Fantastic may form his elastic form into a trampoline and other cushion-like objects, allowing him to safely catch falling people and objects."),
+(37,'Sling Shot',"Mister Fantastic may use his elastic form as a slingshot to hurl objects with great force."),
+(38,'Fist Weapons',"Mister Fantastic may form his fists into large hammers, maces, etc., which improve his physical effectiveness in hand-to-hand combat"),
+(39,'Bouncing Ball',"Mister Fantastic can transform himself into any of a number of resilient shapes, such as balls or springs that allow him to leap or bounce great distances."),
+(40,'Two-Dimensionality',"Mister Fantastic can flatten himself to the thickness of an average sheet of typing paper (.0035 inch) or narrow himself to a diameter small enough to pass through the eye of a #10 beading needle (about .045 x .06 inches)."),
+(41,'Infiltration',"Mister Fantastic can lower his body’s cohesion to such an extent that he can actually flow through minute openings."),
+(42,'Open Locks',"Mister Fantastic may form his fingers into various types of keys, allowing him to open most forms of mechanical locks."),
+(43,'Wind Generation',"Mister Fantastic may form his hands into fans, allowing him to generate wind by twirling them at great speeds."),
+(44,'Semi-Solid Liquid State',"Mister Fantastic can willfully reduce his body into an almost liquid state in order to flow out of small cracks or passages, even through needle-sized holes."),
+(45,'Nigh Omnipotence',"Reed Richards acts as a vessel to the Molecule Man's unlimited source of power. He has shown the ability to create together with his son Franklin entire realities"),
+
+-- mister fantastic
+
+(46,'Superhuman Strength',"Ultron is incredibly strong and can lift at least 100 tons."),
+(47,'Superhuman Speed',"Ultron possesses greater speed than the finest human athlete."),
+(48,'Superhuman Durability',"Ultron's outer shell is usually composed of Adamantium, rendering it almost totally impervious to damage; however, his internal mechanisms are generally less durable and more easily damaged. His skin composition is about .5 inches thick; neck, knee, ankle, elbow, shoulder, wrist, and finger joints are finely tessellated titanium alloy to permit flexing. He is able to withstand concussive blasts and heat of a 100 megaton atomic bomb."),
+(49,'Flight',"Ultron has rocket boosters to fly."),
+(50,'Concussion Blasters',"Laser channeled plasma beam with high and low density plasma options."),
+(51,'Tractor Beams',"High frequency pulsed magnetic graviton particle containment fields. Computer-assisted field control configures gravitons into various shapes which alter the local effects of gravity."),
+(52,'Encephalo-beam',"Located in the head cavity, the encephalo ray plunges its victims into a deathlike coma. It also allows Ultron to mesmerize and outright control his victims, or implant subliminal hypnotic commands within their minds to be enacted at a later time."),
+(53,'Energy Absorption',"Multi-spectrum resonating inducting antenna array convert electromagnetic radiation into electric energy for use or storage"),
+(54,'Program Transmitter',"Located in head cavity, the program transmitter can project Ultron's entire 3.2 terabyte memory/personality system into some computer systems by means of a culminated, high bit-rate magnetic inductance beam. "),
+(55,'Memory Capacity',"3.2 terabytes (monolithic holographic digitization)"),
+(56,'Motility Support',"Motorized endoskeleton"),
+(57,'Power Supply',"Radio isotope thermoelectric nuclear generator"),
+(58,'Sensor Apparatus',"High-resolution optical sensing devices, computer-assisted dexterity and limb position sensor network"),
+
+-- ultron
+(59,'Increased Lifespan',"Kang is over 70 years old chronologically, but the people of his era have improved biology to the point that they seem to age much slower than 21st century man. Thus he appears to be a man in his mid-40s"),
+(60,'Superior-level Intellect',"Though it is hard to gauge Kang's intellect given his futuristic origins, his genius is nothing short of super-human by modern standards. He commands technology beyond the most sophisticated designs of Stark Industries and Doctor Doom, and has made breakthroughs in time travel and robotics. Kang is the only known time traveler (other than his counterpart Immortus) who possess the ability to travel through time without creating divergences. In fact Kang has the combined knowledge and experience of his counterparts from across the Multiverse. Furthermore, when using his time-ship to penetrate the trans-dimensional realm of Limbo, from which all eras are accessible, and where he apparently had his base/stronghold, Kang theoretically has access to technology from any century, and presumably from alien worlds as well. Hence, in combination with the multiple resources available to him, Kang showed to have in his possession rare artifacts such as the last Cosmic Cube, demonstrating expertise to effortlessly manipulate it. It may also include artifacts such as the Forever Crystal, which is capable to erase whole realities from existence."),
+(61,'Political Savvy',"Kang is a brilliant military tactician and a peerless general. Using his considerable charisma, Kang was able to raise an army and conquer his first world within mere weeks of building his armor. He has conquered everything within 100 light years from Other Earth, including the counterpart Badoon and Shi'ar empires of his reality. Though he considers it a chore, Kang is also a capable statesman."),
+(62,'Skilled Combatant',"Kang is a master of both armed and unarmed combat. He has managed to go toe-to-toe with Captain America, and single-handedly held back Immortus' time-tossed army for several minutes during the Destiny War."),
+(63,'Indomitable Will',"Through sheer force of will, Kang managed to separate himself from his future counterpart Immortus to make himself a distinct entity."),
+
+-- kang
+
+(64,'Superhuman Strength',"Hela possesses vast superhuman strength considerably greater than most Asgardians. She has proven capable of standing toe-to-toe with Thor. Hence, she is capable of lifting well in excess of 100 tons."),
+(65,'Superhuman Speed',"Hela is capable of running and moving at superhuman speeds, achieving a peak of potentially 115 mph."),
+(66,'Superhuman Stamina',"Hela's body produces considerably less fatigue toxins than the bodies of human beings, or most other Asgardians for that matter, during physical activity. As a result, Hela possesses almost limitless physical stamina."),
+(67,'Superhuman Durability',"Hela's body is considerably more resistant to physical injury than the bodies of human beings, and most other Asgardians. Hela is capable of withstanding great impact forces, temperature and pressure extremes, high caliber bullets, and powerful energy blasts without sustaining injury."),
+(68,'Immortality',"Hela, unlike the rest of Asgardian Gods is immortal and doesn't age beyond her prime. This is due to her being the Goddess of Death who controls life. She can rapidly age people, even someone as powerful as Thor. She can also grant immortality to other beings like Rugga, the Storm Giant, who kidnapped Sif and brought her to Hela so that she can grant him immortality."),
+(69,'Regenerative Healing Factor',"Despite her body's high resistance to injury, it is possible to injure her. However, Hela's body is capable of healing itself with high levels of superhuman speed and efficiency. The extent of Hela's healing abilities is considerably beyond that the the vast majority of Asgardians, able to reconstitute herself even following molecular disintegration."),
+(70,'Magic Manipulation',"Hela is capable of manipulating great quantities of Asgardian magic for numerous purposes, such as limitless astral projection, firing deadly bolts of energy from her hands that could kill an immortal, levitation, time-travel and the creation of illusions.")
+;
+
+-- hela
+
 /*!40000 ALTER TABLE `Poder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -717,8 +802,99 @@ CREATE TABLE `Poder_Competidor` (
 
 LOCK TABLES `Poder_Competidor` WRITE;
 /*!40000 ALTER TABLE `Poder_Competidor` DISABLE KEYS */;
-INSERT INTO `Poder_Competidor` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(2,13),(2,14),(2,15);
-/*!40000 ALTER TABLE `Poder_Competidor` ENABLE KEYS */;
+INSERT INTO `Poder_Competidor` VALUES 
+(1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(1,6),
+(1,7),
+(1,8),
+(1,9),
+(1,10),
+(1,11),
+(1,12),
+(1,13),
+(1,14),
+(1,15),
+(1,16),
+(1,17),
+(1,18),
+(1,19),
+
+(2,20),
+(2,21),
+(2,22),
+(2,23),
+
+
+(3,24),
+(3,25),
+(3,26),
+(3,27),
+(3,28),
+(3,29),
+(3,30),
+(3,31),
+(3,32),
+(3,33),
+(3,34),
+(3,35),
+(3,36),
+(3,37),
+(3,38),
+(3,39),
+(3,40),
+(3,41),
+(3,42),
+(3,43),
+(3,44),
+(3,45),
+
+
+(4,46),
+(4,47),
+(4,48),
+(4,49),
+(4,50),
+(4,51),
+(4,52),
+(4,53),
+(4,54),
+(4,55),
+(4,56),
+(4,57),
+(4,58),
+
+(5,59),
+(5,60),
+(5,61),
+(5,62),
+(5,63),
+
+(6,60),
+(6,61),
+(6,62),
+(6,63),
+(6,64),
+(6,65),
+(6,66),
+(6,67),
+(6,68),
+(6,69),
+(6,70);
+
+
+
+
+
+
+
+
+
+
+
 UNLOCK TABLES;
 
 --

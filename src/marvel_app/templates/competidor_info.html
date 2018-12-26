@@ -17,7 +17,26 @@
    
     <h4>Poderes y Habilidades</h4>
     <hr>
-   <div class="floatright">
+
+
+    <div>
+        <ul>
+
+                {% for poder in data.poderes %}
+                    <li>
+                        <b>{{poder.nombre}}:</b>
+                        {{poder.descripcion}}
+
+                    </li>
+                {% endfor %}
+        
+        </ul>
+      
+    </div>
+
+
+
+   <div class="ml-5" >
        <table cellpadding="0" cellspacing="0" style="border-left:1px solid grey;border-right:1px solid grey;border-top:1px solid grey;border-bottom:1px solid grey;">
         <tbody>
             <tr>

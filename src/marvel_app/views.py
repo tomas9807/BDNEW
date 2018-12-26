@@ -197,8 +197,23 @@ def get_object_info(table,pk=None):
                 print( hab['valor'])
                 print( hab['width'])
             data['habilidades'] = habilidades
+
+            poderes = api_bd.select_query(
+                f""" 
+                SELECT id,nombre,descripcion 
+                FROM Poder
+                WHERE id in (
+                    SELECT id_poder
+                    FROM  Poder_Competidor
+                    WHERE id_competidor={pk}
+                )
+                """,
+                dictionary=True
+            )
+            data['poderes'] = poderes or None
+
             
-            
+        
 
 
         return render_template('competidor_info.html',data=data,table=table)
