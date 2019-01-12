@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+
+
+
+{% if data %}
+
+<h4>Informacion del Evento</h4>
+<hr>
+<ul>
+    <li><b>Evento ID:</b>{{data.evento.id}}</li>
+    <li><b>Fecha de inicio:</b>{{data.evento.fecha_i}}</li>
+    <li><b>Hora de inicio:</b>{{data.evento.hora_i}}</li>
+
+</ul>
+
+
+
+<h4>Grupos participantes</h4>
+<hr>
+
+<div class="row">
+
+
+{% for grupo in data.grupos %}
+
+
+<div class="col-sm-auto mr-5 card" style="width: 18rem;">
+                
+        <div class="card-body">
+          <h4 class="card-title text-center"><b> Grupo {{loop.index}} </b></h4>
+          <p class="card-text"><b> Grupo ID: </b> <i style="font-size:15px">{{grupo.grupo_id}}</i> </p>
+          <p class="card-text">
+              
+            <b> Integrantes </b>: 
+
+<ul>
+{% for per in grupo.integrantes %}
+
+<li><a style="font-size:15px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=per.id )}}">{{per.nombre}} </a>
+compite por  
+<a href="{{url_for( 'get_object_info',table='Afiliacion',pk=per.id_afi )}}" style="font-size: 13px;">{{per.nombre_afi}} </a>
+</li>
+
+
+
+{% endfor %}
+</ul>
+
+
+          </p>
+         
+        </div>
+      </div>
+
+
+{% endfor %}
+
+</div>
+
+<br>
+
+<h4>Etapa 1</h4>
+<hr>
+<div class="container">
+
+        {% for fecha_i,etapa in data.list_etapa1 %}
+
+        <div class="rounded border">
+
+        
+        <h5 class="text-center pt-2"><b>ENFRENTAMIENTO {{loop.index}} </b> </h5> <hr>
+        <div class="container row ">
+         <div class="col-sm-3 ml-auto text-center">
+             <div>
+                    <img style="width: 250px; height:250px;" class="rounded border mx-auto d-block" src="{{ url_for('static',filename='personajes/' + etapa.enf.inscrito1.foto_path) }}" alt="">
+                    
+                    <a style="font-size:18px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.inscrito1.id )}}"> {{etapa.enf.inscrito1.nombre}} </a> 
+             </div>
+        
+        </div>
+          <div class="col-sm-2 text-center pt-5">
+                <b  style="font-size:65px">VS</b>
+          </div>
+         
+
+          <div class="col-sm-3 mr-auto text-center">
+             <div>
+                    <img style="width: 250px; height:250px;" class="rounded border mx-auto d-block" src="{{ url_for('static',filename='personajes/' + etapa.enf.inscrito2.foto_path) }}" alt="">
+                     
+                    <a style="font-size:18px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.inscrito1.id )}}"> {{etapa.enf.inscrito2.nombre}} </a> 
+             </div>
+        
+        </div>
+        </div>
+        
+        <ul class="border round mb-5">
+            <li> <b>Grupo ID:</b> {{etapa.grupo_id}}:  </li>
+            <li> <b>Ganador: </b> {% if etapa.enf.ganador %} 
+                <a style="font-size:15px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.ganador_pc.id )}}">{{etapa.enf.ganador_pc.nombre}} </a> 
+                {% else %}  
+                ninguno (empate) 
+                {% endif %}  </li>
+
+            <li> <b>Fecha de inicio:</b> {{etapa.enf.fecha_i}}  </li>
+            <li> <b>Hora de inicio:</b> {{etapa.enf.hora_i}} </li>
+            <li> <b>Duracion:</b> {{ etapa.enf.duracion }}  </li>
+        </ul>
+       
+    
+  
+       
+
+
+   
+
+{% endfor %}
+
+</div>
+
+         
+
+
+</div>
+
+<br><br>
+<h4>Etapa 2</h4>
+<hr>
+<div class="container">
+
+        {% for fecha_i,etapa in data.list_etapa2 %}
+
+        <div class="rounded border">
+
+        
+        <h5 class="text-center pt-2"><b>ENFRENTAMIENTO {{loop.index}} </b> </h5> <hr>
+        <div class="container row ">
+         <div class="col-sm-3 ml-auto text-center">
+             <div>
+                    <img style="width: 250px; height:250px;" class="rounded border mx-auto d-block" src="{{ url_for('static',filename='personajes/' + etapa.enf.inscrito1.foto_path) }}" alt="">
+                    
+                    <a style="font-size:18px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.inscrito1.id )}}"> {{etapa.enf.inscrito1.nombre}} </a> 
+             </div>
+        
+        </div>
+          <div class="col-sm-2 text-center pt-5">
+                <b  style="font-size:65px">VS</b>
+          </div>
+         
+
+          <div class="col-sm-3 mr-auto text-center">
+             <div>
+                    <img style="width: 250px; height:250px;" class="rounded border mx-auto d-block" src="{{ url_for('static',filename='personajes/' + etapa.enf.inscrito2.foto_path) }}" alt="">
+                     
+                    <a style="font-size:18px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.inscrito1.id )}}"> {{etapa.enf.inscrito2.nombre}} </a> 
+             </div>
+        
+        </div>
+        </div>
+        
+        <ul class="border round mb-5">
+            <li> <b>Grupo ID:</b> {{etapa.grupo_id}}:  </li>
+            <li> <b>Ganador: </b> {% if etapa.enf.ganador %} 
+                <a style="font-size:15px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.ganador_pc.id )}}">{{etapa.enf.ganador_pc.nombre}} </a> 
+                {% else %}  
+                ninguno (empate) 
+                {% endif %}  </li>
+
+            <li> <b>Fecha de inicio:</b> {{etapa.enf.fecha_i}}  </li>
+            <li> <b>Hora de inicio:</b> {{etapa.enf.hora_i}} </li>
+            <li> <b>Duracion:</b> {{ etapa.enf.duracion }}  </li>
+        </ul>
+       
+    
+  
+       
+
+
+   
+
+{% endfor %}
+
+</div>
+
+         
+
+
+</div>
+
+<br><br>
+<h4>Etapa 3</h4>
+<hr>
+<div class="container">
+
+        {% for fecha_i,etapa in data.list_etapa3 %}
+
+        <div class="rounded border">
+
+        
+        <h5 class="text-center pt-2"><b>ENFRENTAMIENTO {{loop.index}} </b> </h5> <hr>
+        <div class="container row ">
+         <div class="col-sm-3 ml-auto text-center">
+             <div>
+                    <img style="width: 250px; height:250px;" class="rounded border mx-auto d-block" src="{{ url_for('static',filename='personajes/' + etapa.enf.inscrito1.foto_path) }}" alt="">
+                    
+                    <a style="font-size:18px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.inscrito1.id )}}"> {{etapa.enf.inscrito1.nombre}} </a> 
+             </div>
+        
+        </div>
+          <div class="col-sm-2 text-center pt-5">
+                <b  style="font-size:65px">VS</b>
+          </div>
+         
+
+          <div class="col-sm-3 mr-auto text-center">
+             <div>
+                    <img style="width: 250px; height:250px;" class="rounded border mx-auto d-block" src="{{ url_for('static',filename='personajes/' + etapa.enf.inscrito2.foto_path) }}" alt="">
+                     
+                    <a style="font-size:18px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.inscrito1.id )}}"> {{etapa.enf.inscrito2.nombre}} </a> 
+             </div>
+        
+        </div>
+        </div>
+        
+        <ul class="border round mb-5">
+            <li> <b>Grupo ID:</b> {{etapa.grupo_id}}:  </li>
+            <li> <b>Ganador: </b> {% if etapa.enf.ganador %} 
+                <a style="font-size:15px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=etapa.enf.ganador_pc.id )}}">{{etapa.enf.ganador_pc.nombre}} </a> 
+                {% else %}  
+                ninguno (empate) 
+                {% endif %}  </li>
+
+            <li> <b>Fecha de inicio:</b> {{etapa.enf.fecha_i}}  </li>
+            <li> <b>Hora de inicio:</b> {{etapa.enf.hora_i}} </li>
+            <li> <b>Duracion:</b> {{ etapa.enf.duracion }}  </li>
+        </ul>
+       
+    
+  
+       
+
+
+   
+
+{% endfor %}
+
+</div>
+
+         
+
+
+</div>
+
+<br><br>
+<h4>Ganador del Evento</h4>
+<hr>
+<ul>
+    <li><b>Nombre: </b> <a style="font-size:15px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=data.ganador_evento.ganador_pc.id )}}">{{data.ganador_evento.ganador_pc.nombre}} </a> </li>
+    <li><b>Numero de Enfrentamientos Ganados: </b> {{data.ganador_evento.numero}} </li>
+    <li><b>Indicador de poder viejo: </b> {{data.ganador_evento.incrementos.pc_indicador_poder}} </li>
+    <li><b>Indicador de poder nuevo <small>(todas sus habilidades aumentadas en 1)</small>: </b> {{data.ganador_evento.incrementos.pc_indicador_poder_nuevo}} </li>
+    <li><b>Aumento del indicador de poder su grupo de afiliacion (
+        <a href="{{url_for( 'get_object_info',table='Afiliacion',pk=per.id_afi )}}" style="font-size: 13px;">{{per.nombre_afi}} </a>
+    ): 
+    </b> {{data.ganador_evento.incrementos.afi_aumento_indicador_poder}}%</li>
+</ul>
+
+
+<br>
+
+
+{% endif %}
+
+</div>
+
+{% endblock content %}

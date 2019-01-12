@@ -74,13 +74,13 @@
          -->
 
          {% endfor %}
-        <tr style="height:30px;">
+        <tr style="height:30px;" >
         <td></td>
-        <td style="width:301px;height:30px;position:relative;text-align:left;"></td>
+        <td style="width:301px;height:30px;position:relative;text-align:left;" >Indicador de poder: <b>{{data.indicador_poder}}</b></td>
         </tr></tbody></table></div>
       
 
-
+<br> <br> <br>
 
 </div>
 
@@ -217,6 +217,26 @@ ninguno
 <b>Estado civil:</b> {{data.estado_civil}} <hr>
 
 <b>Moralidad:</b> {{data.moralidad}} <hr>
+
+<b>Ocupacion:</b> 
+{% if data.ocupaciones %} 
+
+{% for obj in data.ocupaciones %}
+
+
+<a href="{{url_for( 'get_object_info',table='Ocupacion',pk=obj.id )}}" style="font-size: 13px;">{{obj.nombre}} </a>
+{% if obj != data.ocupaciones  | last %}
+,
+{% endif %}
+
+{% endfor %}
+{% else %}
+ninguna
+
+{% endif %}   <hr>
+
+
+
 
 <b>Altura:</b> {% if data.altura %} 
 {{data.altura}}mts

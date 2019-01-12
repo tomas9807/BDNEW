@@ -7,36 +7,49 @@
 
 
 {% if data %}
-
-
-Nombre: {{data.nombre}} <br>
-
-Descripcion: {% if data.descripcion %} {{data.descripcion}} {% else %} Ninguna {% endif %} <br>
-
-Bases de Operaciones: {% if data.bases_operaciones %} 
-{% for base in data.bases_operaciones %}
-
-{% if base.id %}
-
-<a href="{{url_for( 'get_object_info',table='Base_Operacion',pk=base.id )}}">{{base.nombre}} </a>
-
-{% else %}
-
-{{base.nombre}}
-
+{% if data.foto_path %}
+<h5 class='text-center'><b>{{data.nombre}}</b></h5>
+<img style="width: 250px; height:350px;" class="rounded mx-auto d-block" src="{{ url_for('static',filename='afi/' + data.foto_path) }}" alt=""> <hr>
 {% endif %}
+<ul>
 
-{% if base != data.bases_operaciones | last %}
-,
-{% endif %}
+        <li><b>Tipo: </b>Afiliacion</li>
+        <li><b>Nombre: </b>{{data.nombre}} </li>
+        <li><b>Descripcion: </b>{% if data.descripcion %} {{data.descripcion}} {% else %} Ninguna {% endif %} </li>
+        <li><b>Bases de operaciones asociadas: </b>
+            {% if data.bases_operaciones %} 
+            {% for base in data.bases_operaciones %}
+            
+            {% if base.id %}
+            
+            <a href="{{url_for( 'get_object_info',table='Base_Operacion',pk=base.id )}}">{{base.nombre}} </a>
+            
+            {% else %}
+            
+            {{base.nombre}}
+            
+            {% endif %}
+            
+            {% if base != data.bases_operaciones | last %}
+            ,
+            {% endif %}
+            
+            {% endfor %}
+            
+            {% else %} Ninguna {% endif %} 
 
-{% endfor %}
+            
+ 
+            {% endif %}
+        </li>
+       
 
-{% else %} Ninguna {% endif %} 
-<br>
+</ul>
 
 
-{% endif %}
+  <br>
+
+ 
 
 </div>
 

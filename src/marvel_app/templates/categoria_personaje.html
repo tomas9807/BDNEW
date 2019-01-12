@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h4> Categoria: {{ categoria }}  </h4>
+        <hr>
+        <div class="container">
+{% if data %} 
+
+            
+            <table class="table table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre Real</th>
+                        <th scope="col">Nombre Original (Alias)</th>
+                        <th scope="col">Universo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+            
+            {% for object in data %}
+            
+                      <tr onclick="location.href = '{{url_for( 'get_object_info',table=table,pk=object.id )}}' ">
+                        <th scope="row">{{object.id}}</th>
+                        <td> {{object.nombre_real}}   
+                        {% if object.apellido_real %} 
+                                {{object.apellido_real}} 
+                        {% endif %}  
+                        </td>
+                        <td> {% if object.nombre %} 
+                                {{object.nombre}}
+                            {% else %}
+                            sin alias
+                            {% endif %}
+                        </td>
+            
+                        <td> {% if object.universo %} 
+                                {{object.universo}}
+                            {% else %}
+                            desconocido
+                            {% endif %}
+                        </td>
+            
+                      </tr>
+                      
+            {% endfor %}
+            
+                    </tbody>
+                  </table>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+     
+
+
+    {% else %}
+
+    <div class="alert alert-danger" role="alert">
+            <strong>ERROR!</strong> No se ha podido encontrar personajes con la categoria ingresada.
+          </div>
+
+
+
+                {% if message %}
+                Tal vez buscabas:
+                {% for msg in message %}
+
+                <a href="{{url_for( 'categoria',keyword=msg)}}" >{{msg}} </a>
+                {% if msg != message  | last %}
+                ,
+                {% endif %}
+    
+
+
+                {% endfor %}
+
+
+        {% endif %}
+
+
+ 
+
+
+
+{% endif %}
+
+</div>
+
+{% endblock content %}

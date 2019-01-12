@@ -1,0 +1,63 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+
+
+
+
+    
+
+
+{% if data %}
+
+<table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            {% if table=='Base_Operacion' %}
+            <th scope="col">Universo</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+
+{% for object in data %}
+
+          <tr onclick=" location.href='{{url_for( 'get_object_info',table=table,pk=object.id )}}' ">
+            <th scope="row">{{object.id}}</th>
+            <td>  {{object.nombre}}
+            </td>
+            {% if table=='Base_Operacion' %}
+            <td> {{object.universo}}
+                </td>
+            {% endif %}
+            
+
+            
+
+          </tr>
+          
+{% endfor %}
+
+        </tbody>
+      </table>
+
+
+
+
+
+
+
+
+
+
+
+{% endif %}
+
+</div>
+
+{% endblock content %}

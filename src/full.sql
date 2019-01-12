@@ -149,7 +149,69 @@ CREATE TABLE `Alias` (
 
 LOCK TABLES `Alias` WRITE;
 /*!40000 ALTER TABLE `Alias` DISABLE KEYS */;
-INSERT INTO `Alias` VALUES (1,1,'Daniel Thomas Rand',NULL),(2,1,'Danny Rand',NULL),(3,1,'Young Dragon',NULL),(4,1,'Cooper Payton',NULL),(5,1,'Kung Fu Killer',NULL),(6,1,'Hong Kong Phooey',NULL),(7,1,'impersonated Daredevi',NULL),(8,1,'Kung Fu Killer',NULL),(9,1,'impersonated Spider-Man',NULL);
+INSERT INTO `Alias`(id_competidor,nombre) VALUES 
+
+(1,'Daniel Thomas Rand'),
+(1,'Danny Rand'),
+(1,'Young Dragon'),
+(1,'Cooper Payton'),
+(1,'Kung Fu Killer'),
+(1,'Hong Kong Phooey'),
+(1,'impersonated Daredevil'),
+(1,'Kung Fu Killer'),
+(1,'impersonated Spider-Man'),
+
+(2,'Wall Crawler'),
+(2,'Bug-Man'),
+(2,'Bug-Head'),
+(2,'Spider-Guy,'),
+(2,'Wall Crawlin Do-Gooder'),
+(2,'Turtleneck'),
+(2,'Bogart'),
+
+
+(3,'Stretch'),
+(3,'Big Brain'),
+(3,'Man in the Mystery Mask'),
+(3,'The Invincible Man'),
+(3,'Doctor Doom'),
+(3,'Dr. Reed Richards, The Explorer'),
+
+
+(4,'Great Devil'),
+(4,'Iron Man'),
+(4,'Ultimate Ultron, "Ulty"'),
+(4,'Omega'),
+(4,'Crimson Cowl'),
+(4,'Ultron-5 (and hundreds of other sequential numerical designations)'),
+(4,'Ultron Pym'),
+
+(5,'Victor Timely'),
+(5,'Pharaoh Rama-Tut,'),
+(5,'Blue Man'),
+(5,'King of Kings'),
+(5,'Master of Men'),
+(5,'Lord of the Seven Suns'),
+(5,'Victor Timely Jr'),
+(5,'Conqueror of the Universe'),
+(5,'Scarlet Centurion'),
+
+(6,'Hela of the Norns'),
+(6,'Hel'),
+(6,'Halja'),
+(6,'the Death Queen'),
+(6,'Mistress of the Darkness'),
+(6,'Helen'),
+(6,'Leah of Hel'),
+(6,'the Queen of Death')
+;
+
+
+
+
+
+
+;
 /*!40000 ALTER TABLE `Alias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,6 +400,13 @@ CREATE TABLE `Evento` (
 
 LOCK TABLES `Evento` WRITE;
 /*!40000 ALTER TABLE `Evento` DISABLE KEYS */;
+
+
+
+INSERT INTO Evento (id,fecha_hora_inicio)
+VALUES 
+(1,)
+
 /*!40000 ALTER TABLE `Evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -390,7 +459,7 @@ CREATE TABLE `Habilidad_Competidor` (
 
 LOCK TABLES `Habilidad_Competidor` WRITE;
 /*!40000 ALTER TABLE `Habilidad_Competidor` DISABLE KEYS */;
-INSERT INTO `Habilidad_Competidor` VALUES (1,1,3),(1,2,2),(1,3,2),(1,4,3),(1,5,3),(1,6,6),(2,1,5),(2,2,4),(2,3,3),(2,4,3),(2,5,3),(2,6,4),(3,1,6),(3,2,2),(3,3,2),(3,4,5),(3,5,1),(3,6,3),(4,1,4),(4,2,6),(4,3,3),(4,4,7),(4,5,6),(4,6,4),(5,1,4),(5,2,4),(5,3,7),(5,4,5),(5,5,5),(5,6,4),(6,1,3),(6,2,7),(6,3,7),(6,4,7),(6,5,6),(6,6,3);
+INSERT INTO `Habilidad_Competidor` VALUES (1,1,3),(1,2,2),(1,3,2),(1,4,3),(1,5,3),(1,6,6),(2,1,2),(2,2,4),(2,3,4),(2,4,4),(2,5,1),(2,6,4),(3,1,6),(3,2,2),(3,3,2),(3,4,5),(3,5,1),(3,6,3),(4,1,4),(4,2,6),(4,3,3),(4,4,7),(4,5,6),(4,6,4),(5,1,6),(5,2,4),(5,3,7),(5,4,5),(5,5,5),(5,6,5),(6,1,3),(6,2,7),(6,3,7),(6,4,7),(6,5,6),(6,6,3);
 /*!40000 ALTER TABLE `Habilidad_Competidor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -898,13 +967,13 @@ INSERT INTO `Poder_Competidor` VALUES
 UNLOCK TABLES;
 
 --
--- Table structure for table `Profesion`
+-- Table structure for table `Ocupacion`
 --
 
-DROP TABLE IF EXISTS `Profesion`;
+DROP TABLE IF EXISTS `Ocupacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Profesion` (
+CREATE TABLE `Ocupacion` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(256) NOT NULL,
   `descripcion` text,
@@ -914,39 +983,78 @@ CREATE TABLE `Profesion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Profesion`
+-- Dumping data for table `Ocupacion`
 --
 
-LOCK TABLES `Profesion` WRITE;
-/*!40000 ALTER TABLE `Profesion` DISABLE KEYS */;
-INSERT INTO `Profesion` VALUES (1,'Ing. Electrico','La ingeniería eléctrica es el campo de la ingeniería que se ocupa del estudio y la aplicación de la electricidad, la electrónica y el electromagnetismo'),(2,'Inventor','Inventor o inventora es la persona que idea, crea, concibe, construye o desarrolla algo que no existía antes'),(3,'Ing. Industrial','La ingeniería industrial es una de las ramas de la ingeniería, y se ocupa de la optimización de uso de recursos humanos, técnicos e informativos'),(7,'Vago','no hace nada'),(8,'Ing Informatico','La ingeniería informática o ingeniería en computación es la rama de la ingeniería que aplica los fundamentos de la ciencia de la computación, la ingeniería electrónica, la ingeniería de software y la ingeniería de telecomunicaciones'),(47,'Agricultor',''),(48,'Carpintero',''),(49,'Constructor',''),(50,'Arquitecto',''),(51,'Doctor',''),(52,'Veterinario',''),(53,'Profesor',''),(54,'Mecanico','');
-/*!40000 ALTER TABLE `Profesion` ENABLE KEYS */;
+LOCK TABLES `Ocupacion` WRITE;
+/*!40000 ALTER TABLE `Ocupacion` DISABLE KEYS */;
+INSERT INTO `Ocupacion` VALUES 
+(1,'Aventurero',' Que ama o que busca la aventura.'), 
+(2,'Vigilante','Persona que vigila algo o a alguien.'), 
+
+(3,'Científico','Persona que se dedica a la investigación y estudio de una ciencia.'), 
+(4,'Diosa Asgardiana de la Muerte',NULL), 
+(5,'Co-Gobernante de Hel y Niffleheim',NULL), 
+(6,'Conquistador de mundos',NULL), 
+(7,'Asesino en masa','es una persona que asesina a tres o más personas​​ en un lapso de 30 días o más, con un período de "enfriamiento" entre cada asesinato'), 
+(8,'Esclavizador de hombres',NULL), 
+(9,'Copropietario de Rand-Meachum',NULL), 
+(10,'Guardaespaldas','Persona que tiene por oficio acompañar a otra para protegerla de posibles agresiones.')
+;
+
+
+
+
+/*!40000 ALTER TABLE `Ocupacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Profesion_Competidor`
+-- Table structure for table `Ocupacion_Competidor`
 --
 
-DROP TABLE IF EXISTS `Profesion_Competidor`;
+DROP TABLE IF EXISTS `Ocupacion_Competidor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Profesion_Competidor` (
+CREATE TABLE `Ocupacion_Competidor` (
   `id_competidor` int(10) unsigned NOT NULL,
-  `id_profesion` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id_competidor`,`id_profesion`),
-  KEY `id_profesion` (`id_profesion`),
-  CONSTRAINT `Profesion_Competidor_ibfk_1` FOREIGN KEY (`id_competidor`) REFERENCES `Personaje_Competidor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `Profesion_Competidor_ibfk_2` FOREIGN KEY (`id_profesion`) REFERENCES `Profesion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `id_Ocupacion` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_competidor`,`id_Ocupacion`),
+  KEY `id_Ocupacion` (`id_Ocupacion`),
+  CONSTRAINT `Ocupacion_Competidor_ibfk_1` FOREIGN KEY (`id_competidor`) REFERENCES `Personaje_Competidor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Ocupacion_Competidor_ibfk_2` FOREIGN KEY (`id_Ocupacion`) REFERENCES `Ocupacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Profesion_Competidor`
+-- Dumping data for table `Ocupacion_Competidor`
 --
 
-LOCK TABLES `Profesion_Competidor` WRITE;
-/*!40000 ALTER TABLE `Profesion_Competidor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Profesion_Competidor` ENABLE KEYS */;
+LOCK TABLES `Ocupacion_Competidor` WRITE;
+/*!40000 ALTER TABLE `Ocupacion_Competidor` DISABLE KEYS */;
+INSERT INTO `Ocupacion_Competidor` (id_competidor,id_Ocupacion) 
+VALUES 
+(2,1),
+(2,2),
+(1,1),
+(1,3),
+(1,9),
+(1,10),
+(3,1),
+(3,3),
+(4,3),
+(4,6),
+(4,8),
+(5,6),
+(6,4),
+(6,5);
+
+
+
+
+
+/*!40000 ALTER TABLE `Ocupacion_Competidor` ENABLE KEYS */;
+
+
 UNLOCK TABLES;
 
 --

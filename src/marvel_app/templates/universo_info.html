@@ -8,100 +8,123 @@
 
 {% if data %}
 
+<ul>
+    <li><b>Tipo: </b>Universo</li>
+    <li><b>Nombre: </b>{{data.uni_info.nombre}}</li>
+    <li><b>Descripcion: </b>
+        {% if data.uni_info.descripcion %} {{data.uni_info.descripcion}} {% else %} Ninguna {% endif %}
+    </li>
+    <li><b>Asociado con: </b>
+  <br>
 
-Nombre: {{data.uni_info.nombre}} <br>
+        <div class="container ">
 
-Descripcion: {% if data.uni_info.descripcion %} {{data.uni_info.descripcion}} {% else %} Ninguna {% endif %} <br>
-
-Asociado con: 
-    <br> <br>
     {% if data.pc or data.pnc or data.bo %}
       
-        {% if data.pc %}
-        <b>Personajes Competidores</b> <hr>
-        <ul>
-        {% for pc in data.pc %}
+    {% if data.pc %}
+    <br>
+    <ul class='border'>
+            <b>Personajes Competidores</b> 
+            <hr>
+    {% for pc in data.pc %}
 
-
-
-            {% if pc.apellido_real %}
-
-               <li> <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=pc.id )}}"  style="font-size: 13px;">
-                    
-                    {{pc.nombre_real}} {{pc.apellido_real}} ({{pc.nombre}})</a> </li>
-                {% else %}
-                <li> <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=pc.id )}}"  style="font-size: 13px;">
-                {{pc.nombre_real}} ({{pc.nombre}})</a> </li>
-
-            
-            {% endif %}
-        
-                       
-
-
-        {% endfor %}
-
-      
-    </ul>
-        {% endif %}
-
-        {% if data.pnc %}
-        <b>Personajes No Competidores</b> <hr>
-        <ul> 
-        {% for pc in data.pnc %}
-      
-      
 
 
         {% if pc.apellido_real %}
 
-           <li> <a href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=pc.id )}}"  style="font-size: 13px;">
+           <li> <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=pc.id )}}"  style="font-size: 13px;">
                 
-                {{pc.nombre_real}} {{pc.apellido_real}} </a></li>
+                {{pc.nombre_real}} {{pc.apellido_real}} ({{pc.nombre}})</a> </li>
             {% else %}
-            <li> <a href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=pc.id )}}"  style="font-size: 13px;">
-            {{pc.nombre_real}} </a></li>
+            <li> <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=pc.id )}}"  style="font-size: 13px;">
+            {{pc.nombre_real}} ({{pc.nombre}})</a> </li>
 
-
-        {% endif %}
-      
-                   
         
+        {% endif %}
+    
+                   
+
 
     {% endfor %}
+    <hr>
+  
+</ul>
     {% endif %}
-            </ul> 
-    {% if data.bo %}
-    <b>Bases de Operaciones</b> <hr>
-    <ul>
-    {% for pc in data.bo %}
 
-     
-
-   
-       <li>   <a href="{{url_for( 'get_object_info',table='Base_Operacion',pk=pc.id )}}"  style="font-size: 13px;">
-            
-            {{pc.nombre}} </a></li>
-       
-
-            
+    {% if data.pnc %}
+    <br>
+    <ul class='border'> 
+            <b>Personajes No Competidores</b> 
+            <hr>
+    {% for pc in data.pnc %}
+  
   
 
 
-              
+    {% if pc.apellido_real %}
+
+       <li> <a href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=pc.id )}}"  style="font-size: 13px;">
+            
+            {{pc.nombre_real}} {{pc.apellido_real}} </a></li>
+        {% else %}
+        <li> <a href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=pc.id )}}"  style="font-size: 13px;">
+        {{pc.nombre_real}} </a></li>
+
+
+    {% endif %}
+  
+               
+    
+
 {% endfor %}
+<hr>
+{% endif %}
+        </ul> 
+{% if data.bo %}
+<br>
+<ul class='border'>
+        <b>Bases de Operaciones</b> 
+        <hr>
+{% for pc in data.bo %}
+
+ 
+
+
+   <li>   <a href="{{url_for( 'get_object_info',table='Base_Operacion',pk=pc.id )}}"  style="font-size: 13px;">
+        
+        {{pc.nombre}} </a></li>
+   
+
+        
+
+
+
+          
+{% endfor %}
+<hr>
 </ul>
 {% endif %}
 
 
 
-    {% else %}
-    Nada
+{% else %}
+Nada
 
-    {% endif %}
+{% endif %}
 
 
 {% endif %}
+            </div>
+            
+
+    </li>
+
+    
+</ul>
+
+
+
+  
 
 </div>
 
