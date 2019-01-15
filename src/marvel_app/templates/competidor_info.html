@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if data %}
-<div class="container-fluid text-center">
+<div class="container-fluid text-center ">
 <h3><b>Personaje competidor Nº {{data.id}}</b>
     </h3> 
     <h4><b>{{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %} 
@@ -9,7 +9,7 @@
     <hr>
 <div class="row">
 
-<div class="col-sm-6 ml-5 text-justify">
+<div class="col-sm-6 ml-5 text-justify ">
         
     <h4>Biografia</h4>
     <hr>
@@ -83,13 +83,56 @@
 
 <br> <br> <br>
 
+{% if data.parafernalia %}
+<h4>Parafernalia</h4>
+<hr>
+{% if data.armaduras %}
+<h5>Armaduras</h5>
+<ul>
+        {% for par in data.armaduras %}
+
+    <li><b>{{par.nombre}}</b> {% if par.descripcion %}:{{par.descripcion}} {% endif %} </li>
+    {% endfor %}
+</ul>
+
+
+{% endif %}
+
+{% if data.armas %}
+<h5>Otros</h5>
+<ul>
+        {% for par in data.armas  %}
+
+    <li><b>{{par.nombre}}</b> {% if par.descripcion %}:{{par.descripcion}} {% endif %} </li>
+    {% endfor %}
+</ul>
+
+
+{% endif %}
+
+{% if data.otros  %}
+<h5>Otros</h5>
+<ul>
+        {% for par in data.otros  %}
+
+    <li><b>{{par.nombre}}</b> {% if par.descripcion %}:{{par.descripcion}} {% endif %} </li>
+    {% endfor %}
+</ul>
+
+
+{% endif %}
+
+<hr>
+
+{% endif %}
+
+
 </div>
 
 
 
 
-
-<div class="col-sm-3 ml-5 text-justify border rounded ">
+<div class="col-sm-3 ml-5 text-justify border rounded bg-light">
 
 <h4 class="mt-3 text-center">{{data.nombre}}</h4>
 

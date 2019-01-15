@@ -6,7 +6,7 @@ import difflib
 def get_inscrito_as_pc(inscrito_id):
     return api_bd.select_query(
                     f""" 
-                    SELECT id,nombre,foto_path
+                    SELECT *
                     FROM Personaje_Competidor
                     WHERE id = (
                         SELECT a.id_competidor 
@@ -283,7 +283,19 @@ def get_object_info(table,pk=None):
             )
             """,dictionary=True)
 
-         
+            parafernalia = api_bd.select_query(f""" 
+            SELECT nombre,descripcion,tipo
+            FROM Parafernalia
+            where id in 
+            (SELECT id_parafernalia
+            FROM Parafernalia_Competidor
+            where
+            id_competidor={pk}
+            )
+            """,dictionary=True)
+
+
+
 
             afiliaciones = api_bd.select_query(f""" 
             SELECT id,nombre 
@@ -390,7 +402,13 @@ def get_object_info(table,pk=None):
                    
                     
             data['parientes'] = parientes or None
-        
+
+            data['parafernalia'] = parafernalia or None
+            data['armaduras'] = [par for par in parafernalia if par['tipo']=='armadura']
+            data['armas'] = [par for par in parafernalia if par['tipo']=='arma']
+            data['otros'] = [par for par in parafernalia if par['tipo']=='otro']
+         
+            
             id_enemigos = api_bd.select_query(f""" 
             SELECT 
             id_competidor_padre,
@@ -417,7 +435,7 @@ def get_object_info(table,pk=None):
 
             enemigos = []
             aliados = []
-            print(id_enemigos)
+            
             for ene in id_enemigos:
                 rel = api_bd.select_query(
                         f""" 
@@ -947,9 +965,19 @@ def get_object_info(table,pk=None):
             for ganador,ganador_pc in enfrentamientos_ganados:
                 if data['ganador_evento']['numero'] < enfrentamientos_ganados2.count(ganador):
                     data['ganador_evento']['ganador'] = ganador
+                    if ganador_pc:
+                        for grup in grupos:
+                            for ins in grup['integrantes']:
+                                if ins['id']==ganador_pc['id']:
+                                    ganador_pc['id_afi'] = ins['id_afi']
+                                    ganador_pc['nombre_afi'] = ins['nombre_afi']
+                                    break
+                                    
+                       
                     data['ganador_evento']['ganador_pc'] = ganador_pc
                     data['ganador_evento']['numero'] = enfrentamientos_ganados2.count(ganador)
 
+                    
             habilidades = api_bd.select_query(f""" 
             SELECT ha.id,ha.nombre,comp.valor
             

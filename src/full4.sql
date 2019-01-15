@@ -309,8 +309,7 @@ DROP TABLE IF EXISTS `Categoria`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `Categoria` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(256) NOT NULL,
-  `descripcion` text NULL,
+  `nombre` varchar(256) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -322,9 +321,22 @@ CREATE TABLE `Categoria` (
 LOCK TABLES `Categoria` WRITE;
 /*!40000 ALTER TABLE `Categoria` DISABLE KEYS */;
 
-INSERT INTO Categoria (nombre,descripcion)
+INSERT INTO Categoria (nombre)
 
-VALUES ('dioses','un ser supremo e omnipotente');
+VALUES ('dioses'),
+VALUES ('demonios'),
+VALUES ('mitologicos'),
+VALUES ('androides'),
+VALUES ('monjes'),
+VALUES ('heroes'),
+VALUES ('villanos'),
+VALUES ('antiheroes'),
+VALUES ('gigantes'),
+VALUES ('humanoides'),
+VALUES ('spiderman'),
+VALUES ('nathaniel richards'),
+VALUES ('reed richards')
+;
 
 
 
@@ -367,7 +379,10 @@ VALUES
 (1,NULL,14),
 (1,NULL,15),
 (1,NULL,17),
-(1,NULL,18);
+(1,NULL,18),
+
+
+;
 
 
 
@@ -552,7 +567,7 @@ CREATE TABLE `Inscrito` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_evento` int(10) unsigned DEFAULT NULL,
   `puntos_etapa1` tinyint(3) unsigned DEFAULT NULL,
-  `grupo_id` varchar(255) NOT NULL,
+  `grupo_id` int(10) NOT NULL,
   `id_afiliacion_personaje` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_evento` (`id_evento`),
@@ -568,7 +583,13 @@ CREATE TABLE `Inscrito` (
 
 LOCK TABLES `Inscrito` WRITE;
 /*!40000 ALTER TABLE `Inscrito` DISABLE KEYS */;
-INSERT INTO `Inscrito` VALUES (1,1,3,'c7d48b50-0a50-11e9-9fb4-002719bcff35',20),(2,1,NULL,'c7d48b50-0a50-11e9-9fb4-002719bcff35',33),(3,1,3,'c7d48b50-0a50-11e9-9fb4-002719bcff35',34),(4,1,NULL,'c7d490e9-0a50-11e9-9fb4-002719bcff35',46),(5,1,2,'c7d490e9-0a50-11e9-9fb4-002719bcff35',47),(6,1,4,'c7d490e9-0a50-11e9-9fb4-002719bcff35',56);
+INSERT INTO `Inscrito` VALUES (1,1,3,1,20),
+(2,1,NULL,1,33),
+(3,1,3,1,34),
+(4,1,NULL,2,44),
+(5,1,2,2,51),
+(6,1,4,2,56);
+
 /*!40000 ALTER TABLE `Inscrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -683,7 +704,40 @@ CREATE TABLE `Parafernalia` (
 
 LOCK TABLES `Parafernalia` WRITE;
 /*!40000 ALTER TABLE `Parafernalia` DISABLE KEYS */;
-INSERT INTO `Parafernalia` VALUES (1,'Traje Noir','Peter diseño su propio traje con el uniforme que usaba su tío Ben en la Primera Guerra Mundial.','armadura'),(2,'Revolver','Peter bajo su identidad de Spider-Man utiliza armas de fuego para su lucha contra el crimen, teniendo poco reparo en usarlas cuando es necesario.','arma');
+INSERT INTO `Parafernalia` (id,nombre,descripcion,tipo) 
+VALUES 
+
+
+(1,'Martial arts weapons','Trained in the use of almost all martial arts weapons.','arma'), 
+
+
+(2,"Spider-Man's Noir Suit","A sepia colored uniform made up of Peter's winter attire that he modeled after his uncle's WWI airman uniform.",'armadura'),
+(3,'Pistol revolvers',null,'arma'), 
+
+
+(4,'Fantastic Four uniform','Like all the Fantastic Fours costumes and the rest of Reeds wardrobe, his suit is made of "unstable molecules". This means that the suit is attuned to his powers, which is why Johnnys costume doesnt burn when he "flames on," Sues costume turns invisible when she does, and Reeds costume stretches with him.','armadura'), 
+(5,'Fantasti-Flare','Launches a fiery "4" symbol into the sky that is used during combat situations to let other members of the group know their location.','otro'), 
+(6,'Universal translator','Reed has a Universal Translator that can decipher and interpret languages, both alien and terrestrial, into the native language of the user.','otro'), 
+
+
+(7,'Molecular Re-arranger','capable of rendering Adamantium temporarily malleable; used to reconstruct or modify his physical form.','otro'), 
+(8,'Roboticks','insect-like drones that can devour human flesh.','arma'), 
+
+
+(9,'Battle Armor',"Kang's battle armor is produced from a rare synthetic alloy from the 40th century.",'armadura'), 
+(10,"Kang's Light of the Centuries Sphere","a sphere that can transport people trough space and time. ",'otro'), 
+(11,"Kang's Time Scanner",null,'otro'),
+
+
+(12,'Nightsword',"Hela is often armed with her Nightsword, and is a proficient swordswoman. She battled Pluto proficiently with the Nightsword pitted against his enchanted Midnight Axe until Pluto brought demons in to attack Hela in the course of their duel.",'arma')
+
+;
+
+
+
+
+
+
 /*!40000 ALTER TABLE `Parafernalia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -710,7 +764,27 @@ CREATE TABLE `Parafernalia_Competidor` (
 
 LOCK TABLES `Parafernalia_Competidor` WRITE;
 /*!40000 ALTER TABLE `Parafernalia_Competidor` DISABLE KEYS */;
-INSERT INTO `Parafernalia_Competidor` VALUES (2,1),(2,2);
+INSERT INTO `Parafernalia_Competidor` VALUES 
+
+(1,1),
+
+(2,2),
+(2,3),
+
+(3,4),
+(3,5),
+(3,6),
+
+(4,7),
+(4,8),
+
+(5,9),
+(5,10),
+(5,11),
+
+(6,12);
+
+
 /*!40000 ALTER TABLE `Parafernalia_Competidor` ENABLE KEYS */;
 UNLOCK TABLES;
 

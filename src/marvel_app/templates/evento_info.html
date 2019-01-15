@@ -63,7 +63,9 @@ compite por
 
 <br>
 
-<h4>Etapa 1</h4>
+<h4>Etapas</h4>
+<hr>
+<h3 class='text-center  text-white bg-dark'  ><b>ETAPA 1</b></h3>
 <hr>
 <div class="container">
 
@@ -127,7 +129,7 @@ compite por
 </div>
 
 <br><br>
-<h4>Etapa 2</h4>
+<h3 class='text-center  text-white bg-dark'  ><b>ETAPA 2</b></h3>
 <hr>
 <div class="container">
 
@@ -191,7 +193,7 @@ compite por
 </div>
 
 <br><br>
-<h4>Etapa 3</h4>
+<h3 class='text-center  text-white bg-dark'   > <b>ETAPA 3</b></h3>
 <hr>
 <div class="container">
 
@@ -255,15 +257,29 @@ compite por
 </div>
 
 <br><br>
-<h4>Ganador del Evento</h4>
+<h3 class='text-center text-white bg-dark' > <b>GANADOR DEL EVENTO</b></h3>
 <hr>
+<div class='text-center'>
+        <img style="width: 250px; height:250px;" class="rounded border mx-auto d-block" src="{{ url_for('static',filename='personajes/' + data.ganador_evento.ganador_pc.foto_path) }}" alt="">
+         
+        <a style="font-size:18px"  href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=data.ganador_evento.ganador_pc.id )}}"> {{data.ganador_evento.ganador_pc.nombre}} </a> 
+ </div>
+
 <ul>
-    <li><b>Nombre: </b> <a style="font-size:15px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=data.ganador_evento.ganador_pc.id )}}">{{data.ganador_evento.ganador_pc.nombre}} </a> </li>
+    <li><b>Nombre Real: </b> <a style="font-size:15px" href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=data.ganador_evento.ganador_pc.id )}}">
+        {{data.ganador_evento.ganador_pc.nombre_real}}
+        {% if data.ganador_evento.ganador_pc.apellido_real %}
+        {{data.ganador_evento.ganador_pc.apellido_real}}
+        {% endif %}
+
+    </a> </li>
     <li><b>Numero de Enfrentamientos Ganados: </b> {{data.ganador_evento.numero}} </li>
     <li><b>Indicador de poder viejo: </b> {{data.ganador_evento.incrementos.pc_indicador_poder}} </li>
     <li><b>Indicador de poder nuevo <small>(todas sus habilidades aumentadas en 1)</small>: </b> {{data.ganador_evento.incrementos.pc_indicador_poder_nuevo}} </li>
     <li><b>Aumento del indicador de poder su grupo de afiliacion (
-        <a href="{{url_for( 'get_object_info',table='Afiliacion',pk=per.id_afi )}}" style="font-size: 13px;">{{per.nombre_afi}} </a>
+        <a href="{{url_for( 'get_object_info',table='Afiliacion',pk= data.ganador_evento.ganador_pc.id_afi )}}" style="font-size: 13px;">
+                {{data.ganador_evento.ganador_pc.nombre_afi}} 
+        </a>
     ): 
     </b> {{data.ganador_evento.incrementos.afi_aumento_indicador_poder}}%</li>
 </ul>

@@ -7,60 +7,59 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="{{url_for('static',filename='css/mycss.css')}}" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
    
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
-      <a class="navbar-brand" href="#">Marvel</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top "  style='color:black;background: red'>
+      <img style="width:12%;height:10%;" src="{{ url_for('static',filename='logo/marvel4.png') }}" alt="">
+      
+      
+   
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+           <li class="nav-item " style='font-size:15px;'>
+            <a class="nav-link"   href="{{url_for('home')}}"><b>HOME</b> <span class="sr-only">(current)</span></a>
           </li>
 
 
-<li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Personajes</a>
+<li class="nav-item dropdown " style='font-size:15px;'>
+            <a class="nav-link dropdown-toggle"   href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>PERSONAJES</b></a>
             <div class="dropdown-menu" aria-labelledby="dropdown01"> 
-              <a class="dropdown-item" href="{{url_for('get_table_list',table='Personaje_Competidor') }}">Competidores</a>
-              <a class="dropdown-item" href="{{url_for('get_table_list',table='Personaje_NoCompetidor') }}">No Competidores</a>
+              <a class="dropdown-item"  href="{{url_for('get_table_list',table='Personaje_Competidor') }}"><b>COMPETIDORES</b></a>
+              <a class="dropdown-item"  href="{{url_for('get_table_list',table='Personaje_NoCompetidor') }}"><b>NO COMPETIDORES</b></a>
               
             </div>
           </li>
-          <li class="nav-item active">
-              <a class="nav-link" href="{{url_for('get_table_list',table='Evento') }}">Eventos<span class="sr-only">(current)</span></a>
+           <li class="nav-item " style='font-size:15px;'>
+              <a class="nav-link"  href="{{url_for('get_table_list',table='Evento') }}"><b>EVENTOS</b><span class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="{{url_for('get_table_list',table='Universo') }}">Universos<span class="sr-only">(current)</span></a>
+             <li class="nav-item " style='font-size:15px;'>
+                <a class="nav-link"  href="{{url_for('get_table_list',table='Universo') }}"><b>UNIVERSOS</b><span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item active">
-                  <a class="nav-link" href="{{url_for('get_table_list',table='Afiliacion') }}">Afiliaciones<span class="sr-only">(current)</span></a>
+               <li class="nav-item " style='font-size:15px;'>
+                  <a class="nav-link"  href="{{url_for('get_table_list',table='Afiliacion') }}"><b>AFILIACIONES</b><span class="sr-only">(current)</span></a>
                 </li>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('get_table_list',table='Base_Operacion') }}">Bases de Operaciones<span class="sr-only">(current)</span></a>
+                 <li class="nav-item " style='font-size:15px;'>
+                    <a class="nav-link"  href="{{url_for('get_table_list',table='Base_Operacion') }}"><b>BASES DE OPERACIONES</b><span class="sr-only">(current)</span></a>
                   </li>
 
-                  <li class="nav-item active">
-                      <a class="nav-link" href="{{url_for('get_table_list',table='Grupo') }}">Grupos<span class="sr-only">(current)</span></a>
+                   <li class="nav-item " style='font-size:15px;'>
+                      <a class="nav-link"  href="{{url_for('get_table_list',table='Grupo') }}"><b>GRUPOS</b><span class="sr-only">(current)</span></a>
                     </li>
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{url_for('get_table_list',table='Lugar') }}">Lugares<span class="sr-only">(current)</span></a>
+                     <li class="nav-item " style='font-size:15px;'>
+                        <a class="nav-link"  href="{{url_for('get_table_list',table='Lugar') }}"><b>LUGARES</b><span class="sr-only">(current)</span></a>
                       </li>
           
         </ul>
         
         <form class="form-inline my-2 my-lg-0" method="get" id="form_search">
           <input id="input_categoria" style="width:450px" class="form-control mr-sm-2" type="text" placeholder="Buscar por categoria" aria-label="Search">
-          <button class="btn btn-outline-success mr-2 my-sm-0" type="submit" onclick="change_action()">Buscar</button>
+          <button class="btn btn-white-outline text-danger mr-2 my-sm-0" type="submit" onclick="change_action()">Buscar</button>
         </form>
       </div>
     </nav>
