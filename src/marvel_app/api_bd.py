@@ -63,15 +63,16 @@ def select_recursively_child_parent(table,child_pk,*fetch_atributtes,**cursor_kw
     if 'dictionary' not in cursor_kwargs: cursor_kwargs['dictionary'] = True
     data = []
 
-    hijo = select_objects(table,child_pk,*fetch_atributtes,'id_padre',**cursor_kwargs)[0]
-
-    data.append(hijo)
-    if hijo['id_padre']:
-        id_padre = hijo['id_padre'] 
-        while id_padre:
-            padre = select_objects(table,id_padre,*fetch_atributtes,'id_padre',**cursor_kwargs)[0]
-            data.append(padre)
-            id_padre = padre['id_padre']
+    hijo = select_objects(table,child_pk,*fetch_atributtes,'id_padre',**cursor_kwargs)
+    if hijo:
+        hijo = select_objects(table,child_pk,*fetch_atributtes,'id_padre',**cursor_kwargs)[0]
+        data.append(hijo)
+        if hijo['id_padre']:
+            id_padre = hijo['id_padre'] 
+            while id_padre:
+                padre = select_objects(table,id_padre,*fetch_atributtes,'id_padre',**cursor_kwargs)[0]
+                data.append(padre)
+                id_padre = padre['id_padre']
     return data
 
 def select_id_plus_name(table,pk=None,**cursor_kwargs): 

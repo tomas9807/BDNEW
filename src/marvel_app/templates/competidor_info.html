@@ -2,9 +2,10 @@
 {% block content %}
 {% if data %}
 <div class="container-fluid text-center">
-<h3>{{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %} 
-        {% if data.universo %} <a href="{{url_for( 'get_object_info',table='Universo',pk=data.universo.id )}}">({{data.universo.nombre}}) </a> {% endif %}
-    </h3>  
+<h3><b>Personaje competidor Nº {{data.id}}</b>
+    </h3> 
+    <h4><b>{{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %} 
+            {% if data.universo %} <a href="{{url_for( 'get_object_info',table='Universo',pk=data.universo.id )}}">({{data.universo.nombre}}) </a> {% endif %}</b></h4> 
     <hr>
 <div class="row">
 
@@ -95,6 +96,8 @@
 <img style="width: 250px; height:350px;" class="rounded mx-auto d-block" src="{{ url_for('static',filename='personajes/' + data.foto_path) }}" alt=""> <hr>
 
 <b> Nombre real: </b> {{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %} <hr>
+
+<b> Alias actual: </b> {{data.nombre}}  <hr>
 
 <b>Otros Alias:</b> 
 {% if data.otros_alias %} 
@@ -211,6 +214,110 @@ ninguno
 
 <hr>
 
+
+<b>Aliados:</b> 
+
+
+{% if data.aliados %} 
+
+{% for par in data.aliados %}
+
+
+
+{% if par.apellido_real %}
+
+<a 
+{% if par.tipo=='pc' %}
+href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.id )}}" 
+{% else %}
+href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.id )}}" 
+{% endif %}
+
+style="font-size: 13px;">
+    
+    {{par.nombre_real}} {{par.apellido_real}} {% if par.nombre %} ({{par.nombre}}) {% endif %}</a>
+
+
+{% else %}
+<a 
+{% if par.tipo=='pc' %}
+href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.id )}}" 
+{% else %}
+href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.id )}}" 
+{% endif %}
+ style="font-size: 13px;">
+ {{par.nombre_real}} {% if par.nombre %} ({{par.nombre}}) {% endif %}</a>
+
+
+{% endif %}
+
+{% if par != data.aliados | last %}
+,
+{% endif %}
+
+
+{% endfor %}
+
+
+{% else %}
+ninguno
+{% endif %} 
+
+
+
+<hr>
+
+<b>Enemigos:</b> 
+
+
+{% if data.enemigos %} 
+
+{% for par in data.enemigos %}
+
+
+
+{% if par.apellido_real %}
+
+<a 
+{% if par.tipo=='pc' %}
+href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.id )}}" 
+{% else %}
+href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.id )}}" 
+{% endif %}
+
+style="font-size: 13px;">
+    
+    {{par.nombre_real}} {{par.apellido_real}} {% if par.nombre %} ({{par.nombre}}) {% endif %}</a>
+
+
+{% else %}
+<a 
+{% if par.tipo=='pc' %}
+href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.id )}}" 
+{% else %}
+href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.id )}}" 
+{% endif %}
+ style="font-size: 13px;">
+ {{par.nombre_real}} {% if par.nombre %} ({{par.nombre}}) {% endif %}</a>
+
+
+{% endif %}
+
+{% if par != data.enemigos | last %}
+,
+{% endif %}
+
+
+{% endfor %}
+
+
+{% else %}
+ninguno
+{% endif %} 
+
+
+
+<hr>
 
 <b>Identidad:</b> {{data.identidad}} <hr>
 

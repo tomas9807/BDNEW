@@ -21,6 +21,9 @@
             {% if table=='Base_Operacion' %}
             <th scope="col">Universo</th>
             {% endif %}
+            {% if table=='Lugar' %}
+            <th scope="col">Tipo</th>
+            {% endif %}
           </tr>
         </thead>
         <tbody>
@@ -35,7 +38,26 @@
             <td> {{object.universo}}
                 </td>
             {% endif %}
-            
+            {% if table=='Lugar' %}
+            <td> {% if object.tipo %} 
+              {% if object.tipo == 'mundo_mitologico' %}
+              mundo mitologico
+              {% elif object.tipo == 'dimension_magica' %}
+              dimension magica
+              {% else %}
+              {{object.tipo}} 
+              {% endif %}
+              
+              {% else %} 
+              {% if object.tipo_geografico == 'locale' %}
+              localidad 
+              {% else %}
+              {{object.tipo_geografico}}
+              {% endif %}
+
+              {% endif %}
+                </td>
+            {% endif %}
 
             
 

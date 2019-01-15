@@ -22,6 +22,7 @@ def get_inscrito_as_pc(inscrito_id):
 
 
 
+
 @app.route('/')
 def home():
     return render_template('base.html')
@@ -208,6 +209,7 @@ def get_table_list(table,pk=None):
             evento['hora_i'] = evento['fecha_hora_inicio'].strftime('%I:%M %p')
         html = 'list_eventos.html'
 
+
     else:
         order = 'id'
         if table=='Afiliacion' or 'Base_Operacion':
@@ -307,6 +309,10 @@ def get_object_info(table,pk=None):
             OR  id_competidor_hijo={pk})
             AND tipo_relacion='pariente'
             """,dictionary=True)
+
+
+
+
             if parientes:
 
                 for rela in parientes:
@@ -384,7 +390,65 @@ def get_object_info(table,pk=None):
                    
                     
             data['parientes'] = parientes or None
-                        
+        
+            id_enemigos = api_bd.select_query(f""" 
+            SELECT 
+            id_competidor_padre,
+            id_competidor_hijo,
+            id_personaje_padre,
+            id_personaje_hijo,
+            tipo_relacion
+            FROM Relacion
+            WHERE id_competidor_padre={pk}
+            AND tipo_relacion='enemigo'
+            """,dictionary=True)
+
+            id_aliados = api_bd.select_query(f""" 
+            SELECT 
+            id_competidor_padre,
+            id_competidor_hijo,
+            id_personaje_padre,
+            id_personaje_hijo,
+            tipo_relacion
+            FROM Relacion
+            WHERE id_competidor_padre={pk}
+            AND tipo_relacion='aliado'
+            """,dictionary=True)
+
+            enemigos = []
+            aliados = []
+            print(id_enemigos)
+            for ene in id_enemigos:
+                rel = api_bd.select_query(
+                        f""" 
+                        SELECT id,nombre,nombre_real,apellido_real
+                        FROM {'Personaje_Competidor' if ene['id_competidor_hijo'] else 'Personaje_NoCompetidor'}
+                        WHERE id={ene['id_competidor_hijo'] if ene['id_competidor_hijo'] else ene['id_personaje_hijo']}
+                        """,dictionary=True)[0]
+                rel['tipo'] = 'pc' if ene['id_competidor_hijo'] else 'pnc'
+                enemigos.append(rel)
+
+            for ene in id_aliados:
+                rel = api_bd.select_query(
+                        f""" 
+                        SELECT id,nombre,nombre_real,apellido_real
+                        FROM {'Personaje_Competidor' if ene['id_competidor_hijo'] else 'Personaje_NoCompetidor'}
+                        WHERE id={ene['id_competidor_hijo'] if ene['id_competidor_hijo'] else ene['id_personaje_hijo']}
+                        """,dictionary=True)[0]
+                rel['tipo'] = 'pc' if ene['id_competidor_hijo'] else 'pnc'
+                aliados.append(rel)
+
+                    
+
+
+
+
+            data['enemigos'] = enemigos or None
+            data['aliados'] = aliados or None
+
+
+
+
 
             if afiliaciones:
                 data['afiliaciones'] = afiliaciones
@@ -462,6 +526,7 @@ def get_object_info(table,pk=None):
             if data.get('id_universo'):
                 data['universo'] = api_bd.select_id_plus_name('Universo',pk=data.get('id_universo'),dictionary=True)[0]
             else: data['universo'] = None
+
             if data.get('id_lugar_nacimiento'):
                 data['lugar_nacimiento'] = api_bd.select_recursively_child_parent(
                 'Lugar',
@@ -471,6 +536,7 @@ def get_object_info(table,pk=None):
                 )
             else:
                 data['lugar_nacimiento'] = None
+
             parientes = api_bd.select_query(f""" 
             SELECT 
             id_competidor_padre,
@@ -582,6 +648,59 @@ def get_object_info(table,pk=None):
         """,dictionary=True)
         
         data['bases_operaciones'] = bases_operaciones or None
+        id_integrantes_pc = api_bd.select_query(f""" 
+        SELECT id_competidor,activo
+        FROM Afiliacion_Personaje
+        where id_competidor is not null and id_afiliacion={pk}
+        
+        """,dictionary=True)
+        id_integrantes_pnc = api_bd.select_query(f""" 
+        SELECT id_personaje,activo
+        FROM Afiliacion_Personaje
+        where id_personaje is not null and id_afiliacion={pk}
+        
+        """,dictionary=True)
+ 
+        integrantes_activos = []
+        integrantes_noactivos = []
+
+        for per in id_integrantes_pc:
+            persona = api_bd.select_query(f""" 
+        SELECT nombre_real,apellido_real,nombre
+        FROM Personaje_Competidor
+        WHERE id={per['id_competidor']}
+        
+        """,dictionary=True)
+            if persona:
+                persona[0]['tipo'] = 'pc'
+                persona[0]['id'] = per['id_competidor']
+                if per['activo']:
+                    integrantes_activos.append(persona[0])
+                else:
+                    integrantes_noactivos.append(persona[0])
+        for per in id_integrantes_pnc:
+            persona = api_bd.select_query(f""" 
+        SELECT nombre_real,apellido_real,nombre
+        FROM Personaje_NoCompetidor
+        WHERE id={per['id_personaje']}
+        
+        """,dictionary=True)
+            if persona:
+                persona[0]['tipo'] = 'pnc'
+                persona[0]['id'] = per['id_personaje']
+                if per['activo']:
+                    integrantes_activos.append(persona[0])
+                else:
+                    integrantes_noactivos.append(persona[0])
+
+        data['integrantes_activos'] = integrantes_activos or None
+        data['integrantes_noactivos'] = integrantes_noactivos or None
+
+
+        
+        
+
+
         return render_template('afiliacion_info.html',data=data,table=table)
 
     elif table=='Base_Operacion':
@@ -632,10 +751,34 @@ def get_object_info(table,pk=None):
             FROM Base_Operacion
             WHERE  id_universo={pk}
             """,dictionary=True)
-        uni_info =  api_bd.select_objects(table,pk,'nombre','descripcion',dictionary=True)[0]
+        uni_info =  api_bd.select_objects(table,pk,dictionary=True)[0]
         data = {'pc':data_pc,'pnc':data_pnc,'bo':data_bo,'uni_info':uni_info}
 
         return render_template('universo_info.html',data=data,table=table)
+
+
+    elif table=='Lugar':
+        data_pc = api_bd.select_query(f""" 
+            SELECT id,nombre,nombre_real,apellido_real
+            FROM Personaje_Competidor
+            WHERE  id_universo={pk}
+            """,dictionary=True)
+        data_pnc = api_bd.select_query(f""" 
+            SELECT id,nombre,nombre_real,apellido_real
+            FROM Personaje_NoCompetidor
+            WHERE  id_universo={pk}
+            """,dictionary=True)
+        data_bo = api_bd.select_query(f""" 
+            SELECT id,nombre
+            FROM Base_Operacion
+            WHERE  id_universo={pk}
+            """,dictionary=True)
+
+        uni_info =  api_bd.select_objects(table,pk,dictionary=True)[0]
+        data = {'pc':data_pc,'pnc':data_pnc,'bo':data_bo,'uni_info':uni_info}
+
+        return render_template('lugar_info.html',data=data,table=table)
+
 
     elif table=='Evento':
         data = {}

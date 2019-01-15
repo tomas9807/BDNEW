@@ -7,8 +7,27 @@
 
 
 {% if data %}
-<h3 class='text-center'><b>Universo Nº {{data.uni_info.id}} </b></h3>
+
+<h3 class='text-center'><b>Lugar Nº {{data.uni_info.id}} </b></h3>
+
 <ul>
+    <li><b>Tipo de lugar: </b>{% if data.uni_info.tipo %} 
+        {% if data.uni_info.tipo == 'mundo_mitologico' %}
+        mundo mitologico
+        {% elif data.uni_info.tipo == 'dimension_magica' %}
+        dimension magica
+        {% else %}
+        {{data.uni_info.tipo}} 
+        {% endif %}
+        
+        {% else %} 
+        {% if data.uni_info.tipo_geografico == 'locale' %}
+        localidad 
+        {% else %}
+        {{data.uni_info.tipo_geografico}}
+        {% endif %}
+
+        {% endif %}</li>
     <li><b>Nombre: </b>{{data.uni_info.nombre}}</li>
     <li><b>Descripcion: </b>
         {% if data.uni_info.descripcion %} {{data.uni_info.descripcion}} {% else %} Ninguna {% endif %}

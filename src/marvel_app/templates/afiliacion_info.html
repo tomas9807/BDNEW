@@ -7,13 +7,14 @@
 
 
 {% if data %}
+<h3 class='text-center'><b>Afiliacion Nº {{data.id}} </b></h3>
 {% if data.foto_path %}
 <h5 class='text-center'><b>{{data.nombre}}</b></h5>
 <img style="width: 250px; height:350px;" class="rounded mx-auto d-block" src="{{ url_for('static',filename='afi/' + data.foto_path) }}" alt=""> <hr>
 {% endif %}
 <ul>
 
-        <li><b>Tipo: </b>Afiliacion</li>
+        
         <li><b>Nombre: </b>{{data.nombre}} </li>
         <li><b>Descripcion: </b>{% if data.descripcion %} {{data.descripcion}} {% else %} Ninguna {% endif %} </li>
         <li><b>Bases de operaciones asociadas: </b>
@@ -42,7 +43,108 @@
  
             {% endif %}
         </li>
-       
+        <li><b>Integrantes actuales: </b>
+        
+            {% if data.integrantes_activos %} 
+
+            {% for par in data.integrantes_activos %}
+            
+            
+            
+            {% if par.apellido_real %}
+            
+            <a 
+            {% if par.tipo=='pc' %}
+            href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.id )}}" 
+            {% else %}
+            href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.id )}}" 
+            {% endif %}
+            
+            style="font-size: 13px;">
+                
+                {{par.nombre_real}} {{par.apellido_real}} {% if par.nombre %} ({{par.nombre}}) {% endif %}</a>
+            
+            
+            {% else %}
+            <a 
+            {% if par.tipo=='pc' %}
+            href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.id )}}" 
+            {% else %}
+            href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.id )}}" 
+            {% endif %}
+             style="font-size: 13px;">
+             {{par.nombre_real}} {% if par.nombre %} ({{par.nombre}}) {% endif %}</a>
+            
+            
+            {% endif %}
+            
+            {% if par != data.integrantes_activos | last %}
+            ,
+            {% endif %}
+            
+            
+            {% endfor %}
+            
+            
+            {% else %}
+            ninguno
+            {% endif %} 
+            
+                   
+        
+        </li>
+
+        <li><b>Integrantes anteriores: </b>
+        
+            {% if data.integrantes_noactivos %} 
+
+            {% for par in data.integrantes_noactivos %}
+            
+            
+            
+            {% if par.apellido_real %}
+            
+            <a 
+            {% if par.tipo=='pc' %}
+            href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.id )}}" 
+            {% else %}
+            href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.id )}}" 
+            {% endif %}
+            
+            style="font-size: 13px;">
+                
+                {{par.nombre_real}} {{par.apellido_real}} {% if par.nombre %} ({{par.nombre}}) {% endif %}</a>
+            
+            
+            {% else %}
+            <a 
+            {% if par.tipo=='pc' %}
+            href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.id )}}" 
+            {% else %}
+            href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.id )}}" 
+            {% endif %}
+             style="font-size: 13px;">
+             {{par.nombre_real}} {% if par.nombre %} ({{par.nombre}}) {% endif %}</a>
+            
+            
+            {% endif %}
+            
+            {% if par != data.integrantes_noactivos | last %}
+            ,
+            {% endif %}
+            
+            
+            {% endfor %}
+            
+            
+            {% else %}
+            ninguno
+            {% endif %} 
+            
+                   
+        
+        </li>
+   
 
 </ul>
 

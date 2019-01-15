@@ -7,101 +7,99 @@
 
 
 
-<div class=''>
-
-<h4 class="mt-3 text-center">{{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %}</h4>
-
-<b> Nombre real: </b> {{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %} <hr>
-
-
-<b> Alias actual: </b>  {% if data.nombre %} {{data.nombre}} {% else %} Ninguno {% endif %} <hr>
-
-<b>Genero:</b> {% if data.genero=='M' %} masculino {% elif data.genero=='F' %} femenino {% else %} desconocido {% endif %}  <hr>
-
-<b>Universo:</b> {% if data.universo %} 
-<a href="{{url_for( 'get_object_info',table='Universo',pk=data.universo.id )}}">{{data.universo.nombre}} </a>
-{% else %}
-Desconocido
-{% endif %}  <hr>
-
-<b>Lugar de nacimiento:</b> {% if data.lugar_nacimiento %} 
-
-{% for lugar in data.lugar_nacimiento %}
-
-
-<a href="{{url_for( 'get_object_info',table='Lugar',pk=lugar.id )}}">{{lugar.nombre}} </a>
-{% if lugar != data.lugar_nacimiento | last %}
-,
-{% endif %}
-
-{% endfor %}
-
-{% else %}
-Desconocido
-
-{% endif %}  <hr>
-
-
-<b> Fallecido: </b>  {% if data.fallecido!=None %} 
-
-{% if data.fallecido==True %} Si {% else %}  No {% endif %}
-
-{% else %} se desconoce 
-
-{% endif %} <hr>
-
-
-<b>Parientes:</b> 
-{% if data.parientes %} 
-
-{% for par in data.parientes %}
 
 
 
-{% if par.pariente.apellido_real %}
+<h4 class="mt-3 text-center">Personaje no competidor Nº {{data.id}}</h4>
 
-<a 
-{% if par.tipo=='pc' %}
-href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.pariente.id )}}" 
-{% else %}
-href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.pariente.id )}}" 
-{% endif %}
+<ul class='container'>
+    <li><b>Nombre real: </b>{{data.nombre_real}} {% if data.apellido_real %} {{data.apellido_real}} {% endif %}</li>
+    <li><b>Alias actual: </b> {% if data.nombre %} {{data.nombre}} {% else %} Ninguno {% endif %}</li>
+    <li><b>Genero: </b>{% if data.genero=='M' %} masculino {% elif data.genero=='F' %} femenino {% else %} desconocido {% endif %} </li>
+    <li><b>Universo: </b>{% if data.universo %} 
+        <a href="{{url_for( 'get_object_info',table='Universo',pk=data.universo.id )}}">{{data.universo.nombre}} </a>
+        {% else %}
+        Desconocido
+        {% endif %}   </li>
+    <li><b>Lugar de nacimiento: </b>
+        {% if data.lugar_nacimiento %} 
+        
+        {% for lugar in data.lugar_nacimiento %}
+        
+        
+        <a href="{{url_for( 'get_object_info',table='Lugar',pk=lugar.id )}}">{{lugar.nombre}} </a>
+        {% if lugar != data.lugar_nacimiento | last %}
+        ,
+        {% endif %}
+        
+        {% endfor %}
+        
+        {% else %}
+        Desconocido
+        
+        {% endif %}</li>
+    <li><b>Fallecido: </b>{% if data.fallecido!=None %} 
 
-style="font-size: 13px;">
-    
-    {{par.pariente.nombre_real}} {{par.pariente.apellido_real}} ({{par.tipo_relacion_pariente}})</a>
+        {% if data.fallecido==True %} Si {% else %}  No {% endif %}
+        
+        {% else %} se desconoce 
+        
+        {% endif %}</li>
+    <li><b>Parientes: </b>{% if data.parientes %} 
 
-
-{% else %}
-<a 
-{% if par.tipo=='pc' %}
-href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.pariente.id )}}" 
-{% else %}
-href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.pariente.id )}}" 
-{% endif %}
- style="font-size: 13px;">
- {{par.pariente.nombre_real}} ({{par.tipo_relacion_pariente}})</a>
-
-
-{% endif %}
-
-{% if par != data.parientes | last %}
-,
-{% endif %}
-
-
-{% endfor %}
-
-
-{% else %}
-ninguno
-{% endif %} 
+        {% for par in data.parientes %}
+        
+        
+        
+        {% if par.pariente.apellido_real %}
+        
+        <a 
+        {% if par.tipo=='pc' %}
+        href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.pariente.id )}}" 
+        {% else %}
+        href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.pariente.id )}}" 
+        {% endif %}
+        
+        style="font-size: 13px;">
+            
+            {{par.pariente.nombre_real}} {{par.pariente.apellido_real}} ({{par.tipo_relacion_pariente}})</a>
+        
+        
+        {% else %}
+        <a 
+        {% if par.tipo=='pc' %}
+        href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk=par.pariente.id )}}" 
+        {% else %}
+        href="{{url_for( 'get_object_info',table='Personaje_NoCompetidor',pk=par.pariente.id )}}" 
+        {% endif %}
+         style="font-size: 13px;">
+         {{par.pariente.nombre_real}} ({{par.tipo_relacion_pariente}})</a>
+        
+        
+        {% endif %}
+        
+        {% if par != data.parientes | last %}
+        ,
+        {% endif %}
+        
+        
+        {% endfor %}
+        
+        
+        {% else %}
+        ninguno
+        {% endif %} </li>
+</ul>
 
 
 
 
 
-</div>
+
+
+
+
+
 {% endif %}
 
 {% endblock content %}

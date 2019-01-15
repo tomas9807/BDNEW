@@ -40,47 +40,21 @@ LOCK TABLES `Afiliacion` WRITE;
 INSERT INTO Afiliacion(id,nombre,foto_path,descripcion)  
 
 VALUES
-(1,'X-Men','x-men.jpg','The X-Men are a privately owned security force created to harbor peace between the emerging homo superior, nicknamed "Mutants" and baseline humans. '),
-
 (2,'Avengers','avengers.jpg','The Avengers are a team of extraordinary individuals with special abilities and the will to do good in the world.'),
 
 (3,'Defenders (Manhattan)','defenders-manhattan.jpg','When the trio of heroes Daredevil, Iron Fist and Luke Cage interfered with the operations of rising crime lord Diamondback, they were dealt heavy blows in retaliation.As they were looking for leads on Diamondback together with Luke wife Jessica Jones, Daredevil noticed it could help people know that they actively worked together. They continued operating as a team to investigate Diamondback, and eventually became known as the Defenders.'),
-
 (4,'Defenders','defenders.jpg','Continuously thrown together by various circumstances, the team came to call themselves The Defenders and protect Earth from usually otherworldly attacks. Many members of the team arent particularly fond of their teammates, with fights frequently breaking out and many labeling the group as a \'non-team\' for the way they act'),
-
-(5,'Midnight Sons','midnight-sons.jpg','Nine beings with ties to the occult were drawn together by Doctor Strange to battle Lilith and her demonic children, the Lilin'),
- (6,'Heroes for Hire (Power Man & Iron Fist)','heroes-hire.jpg','Heroes For Hire, Inc. is a small business licensed by the state of New York which offered a full line of professional investigation and protection services.'),
- (7,'Rand Corporation','rand-corp.jpg','Entrepreneur Wendell Rand and co-founder Harold Meachum established Rand-Meachum Incorporated as foundation for their research and investment enterprise.'),
- (8,'Immortal Weapons','inmortal-weapong.png','The champions of the Seven Capital Cities of Heaven, each are skilled in martial arts and able to manipulate Chi energy in various ways.'),
- (9,'Heroes for Hire (Knight & Wing)','heroes-hire-knight.jpg','During the Civil War; Misty Knight and Colleen Wing were contacted by Iron Man, Reed Richards, and Spider-Man to reform Heroes for Hire in order to track down superhumans refusing to comply with the Superhuman Registration Act. '),
- (10,'New Avengers','new-avengers.jpg','The New Avengers first assembled by chance during a breakout occurred at the Raft, an island prison designed to hold super-criminals. Luke Cage (acting as a hired bodyguard) was escorting attorneys Foggy Nelson and Matt Murdock (Daredevil) to meet with the Sentry as it was occurring. Spider-Man, Captain America, and Iron Man all arrived to help keep order.'),
- (11,'Thunderbolts','thunder-bolts.jpg','Conceived as a new incarnation of the Masters of Evil, the Thunderbolts were initially formed by Baron Zemo.'),
- (12,'Heroes for Hire (Oracle Inc.)',null,'Following up on the status of the Oracle corporation that Namor, Jim Hammond (the Golden Age Human Torch) and Danny Rand decided to set up a new Heroes For Hire organization.'),
- (13,'Secret Avengers (Civil War)','secret-avengers.jpg','The Secret Avengers were founded by Captain America in response to the Superhuman Registration Act, set up precisely for those who wanted to fight against Iron Man\'s initiative for superhuman registration.'),
- (14,'Secret Defenders','secret-defenders.jpg','With the Defenders disbanded, Dr. Strange organized his own \"Secret Defenders\" project, recruiting whichever heroes he required for a given mission, with no ongoing members.'),
- (15,'Defenders for a Day',null,'When the Defenders\' associate Dollar Bill created a documentary about the group and aired it on television without their permission, it attracted a group of super-heroes who were interested in joining the group. '),
- (16,'Future Iron Man\'s Team','future-ironman.jpg','This team was formed by Iron Man from the future of various heroes from the past '),
- (17,'Mighty','the-mighty.jpg','In order to retaliate against the Worthy, Captain America brought Ms. Marvel, Iron Fist, Doctor Strange, Iron Man, Black Widow, Hawkeye, Red She-Hulk, Spider-Man, and Wolverine to Asgard to bless certain items in order to match the strength of the Worthy.'),
+ (13,'Inmortal Weapons','inmortal-weapons.png',"The champions of the Seven Capital Cities of Heaven, each are skilled in martial arts and able to manipulate Chi energy in various ways. In the Heart of Heaven they battle each other as representatives of their cities in the Tournament of the Heavenly Cities held every 88 years when their cities merge.The original Immortal Weapons used their Chi energy to open the gateway to the Eighth City to trap the evil of the world, Iron Fist (Quan Yaozu) stayed behind to lock the gates trapping him inside."),
  (18,'Fantastic Four','fantastic-four.jpg','The Fantastic Four are a group of scientific explorers lead by Dr. Reed Richards. After the team gained powers during a impromptu trip to space; Sue Storm, Johnny Storm and pilot Ben Grimm decided to remain together to explore the boundaries of science'),
- (19,'Future Foundation','future-foundation.jpg',' a new group of free-thinking individuals to plan for a better future for all of humanity and Earth. '),
- (20,'Illuminati','illuminati.jpg','The Illuminati were a covert think-tank originally consisting of Mister Fantastic, Iron Man, Professor X, Doctor Strange, Black Bolt, and Namor. '),
  (21,'Interdimensional Council of Reeds (Multiverse)',null,'The Council was founded officially by three versions of Reed Richards who had each acquired their universes\' Infinity Gauntlet.'),
- (22,'Knights of the Atomic Round Table',null,'When the Fantastic Four and the Avengers sacrificed their lives to destroy Onslaught, Franklin Richards, the son of the FF\'s Mr. Fantastic and Invisible Woman subconsciously created a pocket universe to save their lives. '),
- (23,'Headbangers',null,'The Headbangers were a collection of members of Alpha Flight and the Fantastic Four who were controlled by Headlok.'),
- (24,'Amazing Arachnids ',null,NULL),
  (25,'Warriors of the Great Web','warrior-great-web.jpg','The Warriors of the Great Web is a team formed by Spider-UK and Spider-Girl to help any reality that is in need of help.'),
  (26,'Spider-Army','spider-army.jpg','Spider-powered beings from across the Multiverse joining forces to defeat the Inheritors'),
- (27,'Superior Spider-Army','superior-spider-armu.jpg','Spider-powered beings from across the Multiverse to defeat the Totem hunter Karn'),
- (28,'Chronos Corps',null,'The Chronos Corps are a group of time-displaced individuals Kang the Conqueror rescued from certain death at the hands of their own dying universes.'),
- (29,'Anachronauts',null,'Personal guard of Kang the Conqueror'),
+ (27,'Superior Spider-Army','superior-spider-army.jpg','Spider-powered beings from across the Multiverse to defeat the Totem hunter Karn'),
  (30,'Council of Kangs ',null,'A group composed by Prime Kang and two of Kang\'s divergences that were tricked by their future counterpart Immortus to eliminate all divergent Kangs in the Multiverse so that Kang\'s destiny ended with him becoming Immortus. Immortus seemingly succeeded in this task for a time.'),
  (31,'Council of Cross-Time Kangs','council-reeds.jpg','The Council of Cross-Time Kangs was a group of several Humans, aliens and other creatures who took the guise of Kang the Conqueror after defeating the various robots used by the Prime Kang to rule multiple realities at the same time.'),
- (32,'Legion Accursed',null,'Mephisto sent his agent Bitterhorn out to Earth to recruit an army of super-villains to battle the Beyonder. Bitterhorn begins by making deals with the Juggernaut, Electro, Baron Mordo, Absorbing Man and Titania. '),
- (33,'Hel-Rangers',null,'The Hel-Rangers consisted of exiled inhabitants from other domains due to crimes they had committed and were sent to The Shield forever to guard the rest of Battleworld from the Zombies of the Deadlands, the Ultron Sentinels of Perfection, and the Annihilation Wave of New Xandar.'),
  (34,'Sons of Yinsen',null,'A number of young men who had been enslaved by Wong-Chu learned of Ho Yinsen and Iron Man.'),
  (35,'Lethal Legion','lethal-legion.jpg','The Lethal Legion were a super-villain team gathered by Grim Reaper to defeat the Avengers.'),
- (36,'Masters of Evil','master-evil.jpg','The Masters of Evil were a team of supervillains.'),
- (37,'Gods of Asgard',null,'The Asgardians are a humanoid race of extradimensional beings that hail from Asgard, a small pocket-dimension adjacent to Earth. '),
+ (36,'Masters of Evil','masters-evil.jpg','The Masters of Evil were a team of supervillains.'),
  (38,'Hell Lords','hel.jpg','The Hell-Lords are powerful demons each in control of their respective \"Hell\" dimensions and are known to use the title of \"Satan\" to manipulate mortals. ');
 
 /*!40000 ALTER TABLE `Afiliacion` ENABLE KEYS */;
@@ -115,7 +89,100 @@ CREATE TABLE `Afiliacion_Personaje` (
 
 LOCK TABLES `Afiliacion_Personaje` WRITE;
 /*!40000 ALTER TABLE `Afiliacion_Personaje` DISABLE KEYS */;
-INSERT INTO `Afiliacion_Personaje` VALUES (15,1,NULL,3,NULL),(16,1,NULL,6,NULL),(17,1,NULL,7,NULL),(18,1,NULL,8,NULL),(19,1,NULL,5,NULL),(20,1,NULL,4,NULL),(21,1,NULL,9,NULL),(22,1,NULL,10,NULL),(23,1,NULL,11,NULL),(24,1,NULL,12,NULL),(25,1,NULL,13,NULL),(26,1,NULL,14,NULL),(27,1,NULL,15,NULL),(28,1,NULL,16,NULL),(29,1,NULL,17,NULL),(30,2,NULL,24,NULL),(31,2,NULL,25,NULL),(32,2,NULL,26,NULL),(33,2,NULL,27,NULL),(34,3,NULL,18,NULL),(35,3,NULL,19,NULL),(36,3,NULL,20,NULL),(37,3,NULL,2,NULL),(38,3,NULL,4,NULL),(39,3,NULL,21,NULL),(40,3,NULL,22,NULL),(41,3,NULL,21,NULL),(42,3,NULL,23,NULL),(43,4,NULL,34,NULL),(44,4,NULL,35,NULL),(45,4,NULL,36,NULL),(46,4,NULL,32,NULL),(47,5,NULL,28,NULL),(48,5,NULL,28,NULL),(49,5,NULL,28,NULL),(50,5,NULL,29,NULL),(51,5,NULL,30,NULL),(52,5,NULL,31,NULL),(53,5,NULL,32,NULL),(54,5,NULL,33,NULL),(55,6,NULL,37,NULL),(56,6,NULL,38,NULL);
+INSERT INTO Afiliacion_Personaje(id,id_competidor,id_personaje,id_afiliacion,activo) 
+
+VALUES 
+
+(15,1,NULL,3,true),
+(20,1,NULL,4,true),
+(25,1,NULL,13,true),
+(29,1,NULL,17,true),
+(49,1,NULL,17,true),
+(31,2,NULL,25,true),
+
+(32,2,NULL,26,true),
+(33,2,NULL,27,true),
+
+(34,3,NULL,18,true),
+
+(37,3,NULL,2,true),
+(39,3,NULL,21,true),
+(43,4,NULL,34,true),
+(44,4,NULL,35,true),
+(45,4,NULL,36,true),
+(51,5,NULL,30,true),
+(52,5,NULL,31,true),
+(56,6,NULL,38,true)
+
+
+;
+
+INSERT INTO Afiliacion_Personaje(id_competidor,id_personaje,id_afiliacion,activo) 
+
+VALUES 
+(NULL,24,38,false),
+(NULL,25,38,false),
+(NULL,26,38,true),
+
+(NULL,27,25,false),
+(NULL,28,25,false),
+(NULL,29,25,true),
+
+
+(NULL,29,26,false),
+(NULL,28,26,false),
+(NULL,30,26,true),
+(NULL,29,27,false),
+(NULL,28,27,false),
+(NULL,30,27,true),
+
+(NULL,33,18,true),
+(NULL,32,18,false),
+(NULL,31,18,false),
+
+(NULL,31,4,false),
+(NULL,32,4,false),
+
+
+(NULL,31,2,true),
+(NULL,32,2,false),
+(NULL,34,2,false),
+(NULL,34,4,true),
+
+(NULL,35,21,true),
+(NULL,36,21,true),
+(NULL,37,34,true),
+
+(NULL,38,35,true),
+(NULL,39,35,false),
+
+(NULL,38,36,false),
+(NULL,39,36,false),
+
+(NULL,40,36,true),
+(NULL,40,25,true),
+(NULL,40,26,true),
+(NULL,40,27,true),
+
+(NULL,41,30,true),
+
+(NULL,41,31,false),
+(NULL,42,31,true),
+(NULL,43,31,false),
+
+(NULL,44,3,true),
+(NULL,45,3,true),
+
+(NULL,46,13,true),
+(NULL,47,13,false),
+(NULL,48,13,false);
+
+
+
+
+
+
+
 /*!40000 ALTER TABLE `Afiliacion_Personaje` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,7 +598,13 @@ CREATE TABLE `Lugar` (
 
 LOCK TABLES `Lugar` WRITE;
 /*!40000 ALTER TABLE `Lugar` DISABLE KEYS */;
-INSERT INTO `Lugar` VALUES (10,NULL,'Andromeda Galaxy','galaxia',NULL,'The Andromeda Galaxy is home to a great number of alien species, foremost among them the Skrulls who were the dominant force of their galaxy.'),(11,NULL,'Milky Way','galaxia',NULL,'the Milky Way galaxy is home to numerous locations including the Sol system (Earth\'s solar system), and the star system Krona.'),(12,NULL,'Black Galaxy','galaxia',NULL,'The Black Galaxy is a living \"bio-verse\" and Ego the living planet was born there. '),(13,NULL,'Large Magellanic Cloud','galaxia',NULL,'The Large Magellanic Cloud is a dwarf galaxy that orbits the Milky Way. Also known as the Greater Magellanic Cloud, it is the home galaxy of the Kree Empire, as well as the Vorms.'),(14,11,'Tierra','planeta',NULL,NULL),(15,11,'Venus','planeta',NULL,NULL),(16,11,'Marte','planeta',NULL,NULL),(17,11,'Jupiter','planeta',NULL,NULL),(18,11,'Mercurio','planeta',NULL,NULL),(19,11,'Saturno','planeta',NULL,NULL),(20,11,'Urano','planeta',NULL,NULL),(21,11,'Neptuno','planeta',NULL,NULL),(22,14,'Estados Unidos',NULL,'pais',NULL),(23,14,'Canada',NULL,'pais',NULL),(24,14,'Gran Bretana',NULL,'pais',NULL),(25,14,'Wakanda',NULL,'pais',NULL),(26,14,'Alemania',NULL,'pais',NULL),(27,14,'Francia',NULL,'pais',NULL),(28,14,'Belgica',NULL,'pais',NULL),(29,14,'Bulgaria',NULL,'pais',NULL),(30,14,'Finlandia',NULL,'pais',NULL),(31,14,'Italia',NULL,'pais',NULL),(32,14,'Grecia',NULL,'pais',NULL),(33,14,'Rusia',NULL,'pais',NULL),(34,14,'Espana',NULL,'pais',NULL),(35,14,'Iran',NULL,'pais',NULL),(36,14,'Iraq',NULL,'pais',NULL),(37,14,'Egipto',NULL,'pais',NULL),(38,14,'India',NULL,'pais',NULL),(39,14,'China',NULL,'pais',NULL),(40,14,'Japon',NULL,'pais',NULL),(41,14,'Argentina',NULL,'pais',NULL),(42,14,'Colombia',NULL,'pais',NULL),(43,14,'Venezuela',NULL,'pais',NULL),(44,14,'Mexico',NULL,'pais',NULL),(45,14,'Tailandia',NULL,'pais',NULL),(46,14,'Sur Corea',NULL,'pais',NULL),(47,14,'Nor Corea',NULL,'pais',NULL),(48,14,'Brasil',NULL,'pais',NULL),(49,14,'Umbazi',NULL,'pais',NULL),(50,14,'Niganda',NULL,'pais',NULL),(51,14,'Djanda',NULL,'pais',NULL),(52,14,'Australia',NULL,'pais',NULL),(53,22,'Nueva York',NULL,'estado',NULL),(54,22,'Virginia',NULL,'estado',NULL),(55,22,'California',NULL,'estado',NULL),(56,22,'Bruselas',NULL,'estado',NULL),(57,22,'Madrid',NULL,'estado',NULL),(58,22,'Londres',NULL,'estado',NULL),(59,22,'Berlin',NULL,'estado',NULL),(60,22,'Beijing',NULL,'estado',NULL),(61,22,'Shangai',NULL,'estado',NULL),(62,53,'Nueva York City',NULL,'ciudad',NULL),(63,57,'Madrid',NULL,'ciudad',NULL),(64,58,'Ciudad de Londres',NULL,'ciudad',NULL),(65,62,'Manhattan',NULL,'locale',NULL),(66,62,'Long Island',NULL,'locale',NULL),(67,62,'ChinaTown',NULL,'locale',NULL),(68,65,'Central Park',NULL,'locale',NULL),(69,NULL,'Asgard','mundo_mitologico',NULL,NULL),(70,NULL,'Limbo','dimension_magica',NULL,NULL),(71,55,'San Francisco Bay',NULL,'locale',NULL),(72,55,'San Francisco',NULL,'ciudad',NULL),(73,71,'Marin Highlands',NULL,'locale',NULL),(74,52,'Northern Territory',NULL,'locale',NULL),(75,14,'Oceano Atlantico',NULL,'locale',NULL),(76,74,'Triangulo de las Bermudas',NULL,'locale',NULL),(77,65,'Greenwich Village',NULL,'locale',NULL),(78,65,'Harlem',NULL,'locale',NULL),(79,22,'Colorado',NULL,'estado',NULL),(80,62,'Brooklyn',NULL,'locale',NULL),(81,14,'Circulo Artico',NULL,'locale',NULL),(82,81,'Polo Norte',NULL,'locale',NULL),(83,53,'Bronx',NULL,'locale',NULL),(84,11,'Blue Area of the Moon','planeta',NULL,NULL),(85,84,'Negative Zone',NULL,'locale',NULL),(86,79,'Mount Charteris',NULL,'locale',NULL),(87,65,'Times Square',NULL,'locale',NULL),(88,22,'Massachusetts',NULL,'estado',NULL),(89,88,'Boston',NULL,'ciudad',NULL),(90,65,'Yancy Street',NULL,'locale',NULL),(91,22,'Connecticut',NULL,'estado',NULL),(92,91,'Stamford',NULL,'ciudad',NULL),(93,14,'La órbita de la Tierra',NULL,'locale','An area of space around the Earth. Anything within it that cannot resist the gravitational pull of the Earth will rotate around the Earth inside it. '),(94,14,'Antarctica',NULL,'locale',NULL),(95,25,'Necropolis',NULL,'ciudad',NULL),(96,62,'Queens',NULL,'locale',NULL),(97,22,'New Jersey',NULL,'estado',NULL),(98,22,'Tibet',NULL,'estado',NULL),(99,98,'K\'un-Lun',NULL,'ciudad','K\'un-Lun (焜伦) is a mystical lost city located in a pocket dimension, and one of the Seven Capital Cities of Heaven.'),(100,53,'Hegeman',NULL,'ciudad',NULL),(101,23,'Yukon',NULL,'locale',NULL),(102,NULL,'Battleworld','planeta',NULL,NULL),(103,102,'Arachnia',NULL,'locale',NULL),(104,103,'Chinatown',NULL,'locale',NULL),(105,62,'Downtown',NULL,'locale',NULL),(106,14,'Bagalia',NULL,'pais',NULL),(107,106,'Bagalia City',NULL,'ciudad',NULL),(108,14,'Symkaria',NULL,'pais',NULL),(109,22,'Idaho',NULL,'estado',NULL),(110,109,'Burton Canyon',NULL,'locale',NULL),(111,11,'Asgardia','mundo_mitologico',NULL,NULL),(112,22,'Oklahoma',NULL,'estado',NULL),(113,55,'Central City',NULL,'ciudad',NULL),(114,NULL,'Jotunheim','mundo_mitologico',NULL,'Jotunheim is one of the Nine Worlds and exists on the middle of the World Tree along with Midgard. It is home to the Giants of Jotunheim (among them Frost Giants, Storm Giants, Mountain Giants and Brine Giants)');
+INSERT INTO `Lugar` VALUES (10,NULL,'Andromeda Galaxy','galaxia',NULL,'The Andromeda Galaxy is home to a great number of alien species, foremost among them the Skrulls who were the dominant force of their galaxy.'),(11,NULL,'Milky Way','galaxia',NULL,'the Milky Way galaxy is home to numerous locations including the Sol system (Earth\'s solar system), and the star system Krona.'),(12,NULL,'Black Galaxy','galaxia',NULL,'The Black Galaxy is a living \"bio-verse\" and Ego the living planet was born there. '),(13,NULL,'Large Magellanic Cloud','galaxia',NULL,'The Large Magellanic Cloud is a dwarf galaxy that orbits the Milky Way. Also known as the Greater Magellanic Cloud, it is the home galaxy of the Kree Empire, as well as the Vorms.'),(14,11,'Tierra','planeta',NULL,NULL),(15,11,'Venus','planeta',NULL,NULL),(16,11,'Marte','planeta',NULL,NULL),(17,11,'Jupiter','planeta',NULL,NULL),(18,11,'Mercurio','planeta',NULL,NULL),(19,11,'Saturno','planeta',NULL,NULL),(20,11,'Urano','planeta',NULL,NULL),(21,11,'Neptuno','planeta',NULL,NULL),(22,14,'Estados Unidos',NULL,'pais',NULL),(23,14,'Canada',NULL,'pais',NULL),(24,14,'Gran Bretana',NULL,'pais',NULL),(25,14,'Wakanda',NULL,'pais',NULL),(26,14,'Alemania',NULL,'pais',NULL),(27,14,'Francia',NULL,'pais',NULL),(28,14,'Belgica',NULL,'pais',NULL),(29,14,'Bulgaria',NULL,'pais',NULL),(30,14,'Finlandia',NULL,'pais',NULL),(31,14,'Italia',NULL,'pais',NULL),(32,14,'Grecia',NULL,'pais',NULL),(33,14,'Rusia',NULL,'pais',NULL),(34,14,'Espana',NULL,'pais',NULL),(35,14,'Iran',NULL,'pais',NULL),(36,14,'Iraq',NULL,'pais',NULL),(37,14,'Egipto',NULL,'pais',NULL),(38,14,'India',NULL,'pais',NULL),(39,14,'China',NULL,'pais',NULL),(40,14,'Japon',NULL,'pais',NULL),(41,14,'Argentina',NULL,'pais',NULL),(42,14,'Colombia',NULL,'pais',NULL),(43,14,'Venezuela',NULL,'pais',NULL),(44,14,'Mexico',NULL,'pais',NULL),(45,14,'Tailandia',NULL,'pais',NULL),(46,14,'Sur Corea',NULL,'pais',NULL),(47,14,'Nor Corea',NULL,'pais',NULL),(48,14,'Brasil',NULL,'pais',NULL),(49,14,'Umbazi',NULL,'pais',NULL),(50,14,'Niganda',NULL,'pais',NULL),(51,14,'Djanda',NULL,'pais',NULL),(52,14,'Australia',NULL,'pais',NULL),(53,22,'Nueva York',NULL,'estado',NULL),(54,22,'Virginia',NULL,'estado',NULL),(55,22,'California',NULL,'estado',NULL),(56,22,'Bruselas',NULL,'estado',NULL),(57,22,'Madrid',NULL,'estado',NULL),(58,22,'Londres',NULL,'estado',NULL),(59,22,'Berlin',NULL,'estado',NULL),(60,22,'Beijing',NULL,'estado',NULL),(61,22,'Shangai',NULL,'estado',NULL),(62,53,'Nueva York City',NULL,'ciudad',NULL),(63,57,'Madrid',NULL,'ciudad',NULL),(64,58,'Ciudad de Londres',NULL,'ciudad',NULL),(65,62,'Manhattan',NULL,'locale',NULL),(66,62,'Long Island',NULL,'locale',NULL),(67,62,'ChinaTown',NULL,'locale',NULL),(68,65,'Central Park',NULL,'locale',NULL),(69,NULL,'Asgard','mundo_mitologico',NULL,NULL),
+(70,NULL,'Limbo','dimension_magica',NULL,NULL),
+(71,55,'San Francisco Bay',NULL,'locale',NULL),(72,55,'San Francisco',NULL,'ciudad',NULL),(73,71,'Marin Highlands',NULL,'locale',NULL),(74,52,'Northern Territory',NULL,'locale',NULL),(75,14,'Oceano Atlantico',NULL,'locale',NULL),(76,74,'Triangulo de las Bermudas',NULL,'locale',NULL),(77,65,'Greenwich Village',NULL,'locale',NULL),(78,65,'Harlem',NULL,'locale',NULL),(79,22,'Colorado',NULL,'estado',NULL),(80,62,'Brooklyn',NULL,'locale',NULL),(81,14,'Circulo Artico',NULL,'locale',NULL),(82,81,'Polo Norte',NULL,'locale',NULL),(83,53,'Bronx',NULL,'locale',NULL),(84,11,'Blue Area of the Moon','planeta',NULL,NULL),(85,84,'Negative Zone',NULL,'locale',NULL),(86,79,'Mount Charteris',NULL,'locale',NULL),(87,65,'Times Square',NULL,'locale',NULL),(88,22,'Massachusetts',NULL,'estado',NULL),(89,88,'Boston',NULL,'ciudad',NULL),(90,65,'Yancy Street',NULL,'locale',NULL),(91,22,'Connecticut',NULL,'estado',NULL),(92,91,'Stamford',NULL,'ciudad',NULL),(93,14,'La órbita de la Tierra',NULL,'locale','An area of space around the Earth. Anything within it that cannot resist the gravitational pull of the Earth will rotate around the Earth inside it. '),(94,14,'Antarctica',NULL,'locale',NULL),(95,25,'Necropolis',NULL,'ciudad',NULL),(96,62,'Queens',NULL,'locale',NULL),(97,22,'New Jersey',NULL,'estado',NULL),(98,22,'Tibet',NULL,'estado',NULL),(99,98,'K\'un-Lun',NULL,'ciudad','K\'un-Lun (焜伦) is a mystical lost city located in a pocket dimension, and one of the Seven Capital Cities of Heaven.'),(100,53,'Hegeman',NULL,'ciudad',NULL),(101,23,'Yukon',NULL,'locale',NULL),(102,NULL,'Battleworld','planeta',NULL,NULL),(103,102,'Arachnia',NULL,'locale',NULL),(104,103,'Chinatown',NULL,'locale',NULL),(105,62,'Downtown',NULL,'locale',NULL),(106,14,'Bagalia',NULL,'pais',NULL),(107,106,'Bagalia City',NULL,'ciudad',NULL),(108,14,'Symkaria',NULL,'pais',NULL),(109,22,'Idaho',NULL,'estado',NULL),(110,109,'Burton Canyon',NULL,'locale',NULL),(111,11,'Asgardia','mundo_mitologico',NULL,NULL),(112,22,'Oklahoma',NULL,'estado',NULL),(113,55,'Central City',NULL,'ciudad',NULL),
+(114,NULL,'Jotunheim','mundo_mitologico',NULL,'Jotunheim is one of the Nine Worlds and exists on the middle of the World Tree along with Midgard. It is home to the Giants of Jotunheim (among them Frost Giants, Storm Giants, Mountain Giants and Brine Giants)'),
+(115,NULL,'Hell','mundo_mitologico',NULL,NULL)
+;
+
 /*!40000 ALTER TABLE `Lugar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -719,7 +792,73 @@ CREATE TABLE `Personaje_NoCompetidor` (
 
 LOCK TABLES `Personaje_NoCompetidor` WRITE;
 /*!40000 ALTER TABLE `Personaje_NoCompetidor` DISABLE KEYS */;
-INSERT INTO `Personaje_NoCompetidor` VALUES (1,'Ted','Richards',NULL,1,'M',1,22),(2,'Nathaniel',' Richards','The Warlord',0,'M',1,22),(3,'Evelyn',' Richards',NULL,0,'F',1,22),(4,'May',' Parker',NULL,NULL,'F',6,22),(5,'Benjamin',' Parker',NULL,1,'M',6,22),(6,'Wendell','Rand-Kai',NULL,1,'M',1,99),(7,'Heather','Duncan',NULL,0,'F',1,22),(8,'Danielle','Cage',NULL,0,'F',1,22),(9,'Franklin','Richards',NULL,0,'M',1,22),(10,'Valeria','Richards',NULL,0,'F',1,22),(11,'Hamish','',NULL,0,'M',1,22),(12,'Laufey','','King Laufey',NULL,'M',1,114),(13,'Farbauti ','',NULL,NULL,'F',1,114),(14,'Loki','Laufeyson',NULL,NULL,'M',1,114),(15,'Angerboda','',NULL,NULL,'F',1,69),(16,'Helblindi','',NULL,NULL,'M',1,114),(17,'Fenris','Wolf',NULL,NULL,'M',1,69),(18,'Jormungand','','Midgard Serpent',NULL,NULL,1,69),(19,'Ramades','',NULL,NULL,'M',1,37),(20,'Marcus','Kang XXIII','Scarlet Centurion',1,'M',16,37),(21,'Nathaniel',' Richards',NULL,0,'M',16,22),(22,'Evelyn',' Richards',NULL,0,'F',16,22),(23,'Thomas',' Duncan',NULL,1,'M',16,22);
+INSERT INTO `Personaje_NoCompetidor` VALUES (1,'Ted','Richards',NULL,1,'M',1,22),(2,'Nathaniel',' Richards','The Warlord',0,'M',1,22),(3,'Evelyn',' Richards',NULL,0,'F',1,22),(4,'May',' Parker',NULL,NULL,'F',6,22),(5,'Benjamin',' Parker',NULL,1,'M',6,22),(6,'Wendell','Rand-Kai',NULL,1,'M',1,99),(7,'Heather','Duncan',NULL,0,'F',1,22),(8,'Danielle','Cage',NULL,0,'F',1,22),(9,'Franklin','Richards',NULL,0,'M',1,22),(10,'Valeria','Richards',NULL,0,'F',1,22),(11,'Hamish','',NULL,0,'M',1,22),(12,'Laufey','','King Laufey',NULL,'M',1,114),(13,'Farbauti ','',NULL,NULL,'F',1,114),(14,'Loki','Laufeyson',NULL,NULL,'M',1,114),(15,'Angerboda','',NULL,NULL,'F',1,69),(16,'Helblindi','',NULL,NULL,'M',1,114),(17,'Fenris','Wolf',NULL,NULL,'M',1,69),(18,'Jormungand','','Midgard Serpent',NULL,NULL,1,69),(19,'Ramades','',NULL,NULL,'M',1,37),(20,'Marcus','Kang XXIII','Scarlet Centurion',1,'M',16,37),(21,'Nathaniel',' Richards',NULL,0,'M',16,22),(22,'Evelyn',' Richards',NULL,0,'F',16,22),
+(23,'Thomas',' Duncan',NULL,1,'M',16,22),
+-- hell lords
+(24,'Lucifer',NULL,'Satan',0,'M',1,115),
+(25,'Xuthl',NULL,'Lord of the Evil Dead',0,'M',1,115),
+
+(26,'Beelzebub',NULL,'The Devil',0,'M',1,115),
+
+(27,'Kaine','Parker',NULL,0,'F',1,22),
+(28,'Peter','Parker',NULL,0,'M',26,22),
+(29,'May','Reilly','Lady Spider',0,'F',17,22),
+
+
+
+(30,'Peter','Parker',NULL,0,'M',19,22),
+
+(31,"T'Challa",NULL,'Black Panther',0,'M',1,47),
+(32,"Steven",'Rogers','Captain America',0,'M',1,65),
+(33,"Jonathan",'Storm','Human Torch',0,'M',1,66),
+(34,"Stephen",'Strange','Doctor Strange',0,'M',1,22),
+(35,"Reed",'Richards',NULL,0,'M',19,22),
+(36,"Reed",'Richards',NULL,0,'M',21,22),
+(37,"Sun",'Tao',NULL,0,'M',1,22),
+(38,"Carl",'Creel','Absorbing Man',0,'M',1,22),
+(39,"Jacques",'Duquesne','Swordsman',0,'M',1,22),
+(40,"Otto",'Octavius','Spider-Man',0,'M',1,22),
+(41,"Nathaniel",'Richards','Kang the Conqueror',0,'M',22,22),
+(42,"Nathaniel",'Richards','Kang the Conqueror',0,'M',23,22),
+(43,"Nathaniel",'Richards','Kang the Conqueror',0,'M',25,22),
+(44,"Matthew",'Murdock','Daredevil',0,'M',1,22),
+(45,"Jessica",'Jones',NULL,0,'F',1,22),
+(46,"Fat Cobra",NULL,NULL,0,'M',1,22),
+(47,"Davos",NULL,NULL,0,'M',1,22),
+(48,"Bride of Nine Spiders",NULL,NULL,0,'F',1,22),
+(49,'Arachnosaur',NULL,NULL,1,'M',18,22),
+(50,"Parker Robbins",'The Hood',NULL,0,'M',1,22),
+(51,"Frank",'Castle','Punisher',0,'M',1,22),
+
+(52,"Edward",' Brock','Venom',0,'M',1,22),
+(53,"Lonnie",' Lincoln','Tombstone',0,'M',1,22),
+(54,"Sinister",'Sextet','Tombstone',0,'M',1,22),
+
+(55,"Galan",NULL,'Galactus',0,'M',1,22),
+(56,"Tony",'Stark','Iron Man',0,'M',1,22),
+(57,"Bruce",'Banner','The Hulk',0,'M',1,22),
+(58,"Ravonna",'Renslayer','Terminatrix',0,'F',1,22),
+(59,"Thor",'Odinson',NULL,0,'M',1,69),
+(60,"Leita",null,null,0,'F',1,22)
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;
 /*!40000 ALTER TABLE `Personaje_NoCompetidor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -865,7 +1004,101 @@ CREATE TABLE `Relacion` (
 
 LOCK TABLES `Relacion` WRITE;
 /*!40000 ALTER TABLE `Relacion` DISABLE KEYS */;
-INSERT INTO `Relacion` VALUES (4,NULL,3,1,NULL,'pariente','tio'),(5,NULL,3,2,NULL,'pariente','padre'),(6,NULL,3,3,NULL,'pariente','padre'),(7,NULL,3,11,NULL,'pariente','primo'),(8,3,NULL,NULL,9,'pariente','padre'),(9,3,NULL,NULL,9,'pariente','padre'),(10,NULL,2,4,NULL,'pariente','tio'),(11,NULL,2,5,NULL,'pariente','tio'),(12,NULL,6,12,NULL,'pariente','abuelo'),(13,NULL,6,13,NULL,'pariente','abuelo'),(14,NULL,6,14,NULL,'pariente','padre'),(15,NULL,6,15,NULL,'pariente','padre'),(16,NULL,6,16,NULL,'pariente','tio'),(17,NULL,6,17,NULL,'pariente','hermano'),(18,NULL,6,18,NULL,'pariente','hermano'),(19,5,NULL,NULL,19,'pariente','padre'),(20,5,NULL,NULL,20,'pariente','padre'),(21,NULL,5,21,NULL,'pariente','padre'),(22,NULL,5,22,NULL,'pariente','padre'),(23,NULL,1,23,NULL,'pariente','abuelo'),(24,NULL,1,6,NULL,'pariente','padre'),(25,NULL,1,7,NULL,'','padre'),(26,1,NULL,NULL,8,'pariente','tio');
+INSERT INTO `Relacion` VALUES (4,NULL,3,1,NULL,'pariente','tio'),
+(5,NULL,3,2,NULL,'pariente','padre'),(6,NULL,3,3,NULL,'pariente','padre'),
+(7,NULL,3,11,NULL,'pariente','primo'),(8,3,NULL,NULL,9,'pariente','padre'),
+(9,3,NULL,NULL,9,'pariente','padre'),(10,NULL,2,4,NULL,'pariente','tio'),
+(11,NULL,2,5,NULL,'pariente','tio'),(12,NULL,6,12,NULL,'pariente','abuelo'),
+(13,NULL,6,13,NULL,'pariente','abuelo'),(14,NULL,6,14,NULL,'pariente','padre'),
+(15,NULL,6,15,NULL,'pariente','padre'),(16,NULL,6,16,NULL,'pariente','tio'),
+(17,NULL,6,17,NULL,'pariente','hermano'),(18,NULL,6,18,NULL,'pariente','hermano'),
+(19,5,NULL,NULL,19,'pariente','padre'),(20,5,NULL,NULL,20,'pariente','padre'),
+(21,NULL,5,21,NULL,'pariente','padre'),(22,NULL,5,22,NULL,'pariente','padre'),
+(23,NULL,1,23,NULL,'pariente','abuelo'),(24,NULL,1,6,NULL,'pariente','padre'),
+(25,NULL,1,7,NULL,'','padre'),(26,1,NULL,NULL,8,'pariente','tio');
+
+INSERT INTO Relacion(id_competidor_padre,id_personaje_hijo,tipo_relacion)
+VALUES
+(1,44,'aliado'),
+(1,45,'aliado'),
+(1,34,'aliado'),
+(1,44,'aliado'),
+(1,31,'aliado'),
+(1,32,'aliado'),
+(1,46,'aliado'),
+(1,47,'aliado'),
+(1,48,'aliado'),
+
+(2,29,'aliado'),
+(2,40,'aliado'),
+(2,27,'aliado'),
+(2,28,'aliado'),
+(2,30,'aliado'),
+(2,29,'aliado'),
+
+(3,33,'aliado'),
+(3,32,'aliado'),
+(3,35,'aliado'),
+(3,36,'aliado'),
+
+(4,37,'aliado'),
+(4,39,'aliado'),
+(4,38,'aliado'),
+(4,40,'aliado'),
+
+
+(5,41,'aliado'),
+(5,42,'aliado'),
+(5,43,'aliado'),
+
+(6,26,'aliado'),
+(6,24,'aliado'),
+(6,25,'aliado'),
+(6,14,'aliado'),
+
+(1,14,'enemigo'),
+(1,50,'enemigo'),
+(1,51,'enemigo'),
+
+(2,52,'enemigo'),
+(2,53,'enemigo'),
+(2,54,'enemigo'),
+
+(3,14,'enemigo'),
+(3,55,'enemigo'),
+
+(4,56,'enemigo'),
+(4,57,'enemigo'),
+
+(5,56,'enemigo'),
+(5,57,'enemigo'),
+(5,58,'enemigo'),
+
+(6,60,'enemigo'),
+(6,59,'enemigo');
+
+
+INSERT INTO Relacion(id_competidor_padre,id_competidor_hijo,tipo_relacion)
+VALUES
+
+(6,3,'enemigo'),
+(5,3,'enemigo'),
+(4,3,'enemigo'),
+(3,6,'enemigo'),
+(3,5,'enemigo'),
+(3,4,'enemigo');
+
+
+
+
+
+
+
+
+
+
+
+
 /*!40000 ALTER TABLE `Relacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -878,7 +1111,7 @@ DROP TABLE IF EXISTS `Universo`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `Universo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(256) NOT NULL,
+  `nombre` varchar(256) NOT NULL unique,
   `descripcion` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
@@ -890,7 +1123,25 @@ CREATE TABLE `Universo` (
 
 LOCK TABLES `Universo` WRITE;
 /*!40000 ALTER TABLE `Universo` DISABLE KEYS */;
-INSERT INTO `Universo` VALUES (1,'Tierra 616','es el universo original de Marvel donde se originan la mayoría de las historias y personajes, de hecho este es el espacio de las series clásicas como X- Men, The Amazing Spider-Man y Fantastic Four'),(2,'House of M','es un universo que deriva de Tiera 616 donde los mutantes son quienes predominan. Debido a la acción de la Bruja Escarlata ningun ser humano recuerda como solía ser su mundo, excepto los agentes de SHIELD y Wolverine.'),(3,'Ultimate','se puede decir que es el universo donde todo vuelve a comenzar. En este universo los superhéroes presentan características diferentes a las del original, por ejemplo, el Ultimate Spider-Man es Miles Morales que es una persona afroamericana con ascendencia latina.'),(4,'Age of Apocalypse','es producto de un accidente temporal cuando Legion, hijo del profesor X, viaja al pasado para asesinar a Magneto, pero por un error mata a su propio padre, lo que provoca el ascenso de Apocalipsis como señor de la Tierra. En este Universo, también conocido como Tierra 295, los humanos se revelan junto a Reed Richards y Tony Stark.'),(5,'Marvel 2099','es el universo del futuro en este lugar las grandes corporaciones controlan un mundo dividido por una guerra entre humanos y mutantes, aquí surgen historias como Spider- Man 2099, X-Men 2099 y Fantastic Four 2099 entre otros.'),(6,'Marvel Noir','por alguna razón, la mayoría de los personajes no tienen poderes, a excepción de Spider-Man.'),(7,'Marvel Zombies','es el mundo de los muertos vivientes, en éste mundo los superhéroes y villanos son infectados por un virus alienígena que los convierte en zombies.'),(8,'Ucronías','es el universo donde los escritores se preguntaron “que hubiese pasado si...”. En esta línea temporal hay cosas que nunca sucedieron o sucedieron de forma diferente, por ejemplo Bruce Banner es mordido por una araña radioactiva que lo convierte en Spider-Man mientras que Peter Parker se inyecta la fórmula que lo convierte en Hulk.'),(9,'Larval Universe','también conocido como Tierra 8311, es el universo donde los personajes conocidos se presentan como una versión animal: Spider-Ham, Fantastic Fur y el Capitán Americat, entre otros.'),(10,'Tierra-001','La Tierra-001 es la realidad natal de Los Herederos y alberga los trofeos de mil mundos conquistados.'),(11,'Tierra-15513','La Tierra-15513 es una realidad dentro de la cual el Dios Emperador de Doom formó su Battleworld.'),(12,'Tierra-3145','Tierra-3145 es el hogar de Ben Parker, quien se convirtió en el hombre araña en esta realidad. Sin embargo, se retiró de Spider-Man después de que su esposa y su sobrino fueron asesinados por la Elf Esmeralda.'),(13,'Tierra-13','La Tierra-13 es una realidad alternativa del Universo 616. En este mundo Peter Parker fue elegido por la Fuerza Enigma y retuvo los poderes del Capitán Universo.'),(14,'Tierra-TRN588','Earth-TRN588 is a divergent reality similar to Earth-928, a reality where a second Age of Heroes began in the future of 2099 A.D. '),(15,'Multiverso','The Multiverse is the collection of alternate universes which share a universal hierarchy; it is a subsection of the larger Omniverse, the collection of all alternate universes. '),(16,'Tierra-6311','Other Earth\'s history is similar to the history of Earth-616 had the Dark Ages instead been filled with the great leaps of exploration and discovery characteristic of Earth\'s 20th century.');
+INSERT INTO `Universo` VALUES (1,'Tierra 616','es el universo original de Marvel donde se originan la mayoría de las historias y personajes, de hecho este es el espacio de las series clásicas como X- Men, The Amazing Spider-Man y Fantastic Four'),(2,'House of M','es un universo que deriva de Tiera 616 donde los mutantes son quienes predominan. Debido a la acción de la Bruja Escarlata ningun ser humano recuerda como solía ser su mundo, excepto los agentes de SHIELD y Wolverine.'),(3,'Ultimate','se puede decir que es el universo donde todo vuelve a comenzar. En este universo los superhéroes presentan características diferentes a las del original, por ejemplo, el Ultimate Spider-Man es Miles Morales que es una persona afroamericana con ascendencia latina.'),(4,'Age of Apocalypse','es producto de un accidente temporal cuando Legion, hijo del profesor X, viaja al pasado para asesinar a Magneto, pero por un error mata a su propio padre, lo que provoca el ascenso de Apocalipsis como señor de la Tierra. En este Universo, también conocido como Tierra 295, los humanos se revelan junto a Reed Richards y Tony Stark.'),(5,'Marvel 2099','es el universo del futuro en este lugar las grandes corporaciones controlan un mundo dividido por una guerra entre humanos y mutantes, aquí surgen historias como Spider- Man 2099, X-Men 2099 y Fantastic Four 2099 entre otros.'),(6,'Marvel Noir','por alguna razón, la mayoría de los personajes no tienen poderes, a excepción de Spider-Man.'),(7,'Marvel Zombies','es el mundo de los muertos vivientes, en éste mundo los superhéroes y villanos son infectados por un virus alienígena que los convierte en zombies.'),(8,'Ucronías','es el universo donde los escritores se preguntaron “que hubiese pasado si...”. En esta línea temporal hay cosas que nunca sucedieron o sucedieron de forma diferente, por ejemplo Bruce Banner es mordido por una araña radioactiva que lo convierte en Spider-Man mientras que Peter Parker se inyecta la fórmula que lo convierte en Hulk.'),(9,'Larval Universe','también conocido como Tierra 8311, es el universo donde los personajes conocidos se presentan como una versión animal: Spider-Ham, Fantastic Fur y el Capitán Americat, entre otros.'),(10,'Tierra-001','La Tierra-001 es la realidad natal de Los Herederos y alberga los trofeos de mil mundos conquistados.'),(11,'Tierra-15513','La Tierra-15513 es una realidad dentro de la cual el Dios Emperador de Doom formó su Battleworld.'),(12,'Tierra-3145','Tierra-3145 es el hogar de Ben Parker, quien se convirtió en el hombre araña en esta realidad. Sin embargo, se retiró de Spider-Man después de que su esposa y su sobrino fueron asesinados por la Elf Esmeralda.'),(13,'Tierra-13','La Tierra-13 es una realidad alternativa del Universo 616. En este mundo Peter Parker fue elegido por la Fuerza Enigma y retuvo los poderes del Capitán Universo.'),
+(14,'Tierra-TRN588','Earth-TRN588 is a divergent reality similar to Earth-928, a reality where a second Age of Heroes began in the future of 2099 A.D. '),
+(15,'Multiverso','The Multiverse is the collection of alternate universes which share a universal hierarchy; it is a subsection of the larger Omniverse, the collection of all alternate universes. '),
+(16,'Tierra-6311','Other Earth\'s history is similar to the history of Earth-616 had the Dark Ages instead been filled with the great leaps of exploration and discovery characteristic of Earth\'s 20th century.'),
+(17,'Tierra-803',NULL),
+(18,'Tierra-99476',NULL),
+(19,'Tierra-751263',NULL),
+(21,'Tierra-TRN116',NULL),
+(22,'Tierra-TRN280',NULL),
+(23,'Tierra-TRN201',NULL),
+(24,'Tierra-8096',NULL),
+(25,'Tierra-Mesozoic24',NULL),
+(26,'Tierra-22191',NULL)
+
+;
+
+
+
+
 /*!40000 ALTER TABLE `Universo` ENABLE KEYS */;
 UNLOCK TABLES;
 

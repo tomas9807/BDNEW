@@ -8,11 +8,11 @@
 
 {% if data %}
 
+<h3 class='text-center'><b>Base de Operaciones Nº {{data.id}} </b></h3>
 
 
 
 <ul>
-        <li><b>Tipo: </b>Base de operacion</li>
         <li><b>Nombre: </b>{{data.nombre}} </li>
         <li><b>Descripcion: </b> {% if data.descripcion %} {{data.descripcion}} {% else %} Ninguna {% endif %}
         </li>
