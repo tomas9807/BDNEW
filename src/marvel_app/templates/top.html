@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+
+<ul>
+    <li><b>GRUPO CON MAS GANADORES:</b> <br>
+                - Grupo ID 4  <br>
+                - Evento en que ganaron: <a href="{{url_for( 'get_object_info',table='Evento',pk= 2)}}" >
+                        Evento 2
+                </a>  <br>
+                - Integrantes:  
+                <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk= 4)}}" >
+                        Ultron
+                </a> por 
+                <a href="{{url_for( 'get_object_info',table='Afiliacion',pk= 34)}}" style="font-size: 13px;">
+                        Sons of Yinsen
+                </a>,
+                <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk= 5)}}" >
+                        Kang the conqueror
+                </a> por 
+                <a href="{{url_for( 'get_object_info',table='Afiliacion',pk= 30)}}" style="font-size: 13px;">
+                        Council of Kangs
+                </a>,
+                <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk= 6)}}" >
+                        Hela
+                </a> por 
+                <a href="{{url_for( 'get_object_info',table='Afiliacion',pk= 38)}}" style="font-size: 13px;">
+                        Hell Lords
+                </a>
+
+    </li>
+    <li><b>TOP 3 PERSONAJES CON MAS COMPETENCIAS GANADAS: </b> <br>
+            <a href="{{url_for( 'get_object_info',table='Personaje_Competidor',pk= 6)}}" >
+                    - Hela
+            </a> por 
+            <a href="{{url_for( 'get_object_info',table='Afiliacion',pk= 38)}}" style="font-size: 13px;">
+                    Hell Lords ,
+            </a>
+            
+            cantidad de peleas ganadas: 8 en total, 4 en <a href="{{url_for( 'get_object_info',table='Evento',pk= 1)}}" >
+                    Evento 1
+            </a>  y 4 en <a href="{{url_for( 'get_object_info',table='Evento',pk= 2)}}" >
+                    Evento 2
+            </a> 
+    </li>
+</ul>
+
+
+</div>
+
+{% endblock content %}

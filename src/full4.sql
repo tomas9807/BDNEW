@@ -309,7 +309,7 @@ DROP TABLE IF EXISTS `Categoria`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `Categoria` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(256) NOT NULL
+  `nombre` varchar(256) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -324,18 +324,18 @@ LOCK TABLES `Categoria` WRITE;
 INSERT INTO Categoria (nombre)
 
 VALUES ('dioses'),
-VALUES ('demonios'),
-VALUES ('mitologicos'),
-VALUES ('androides'),
-VALUES ('monjes'),
-VALUES ('heroes'),
-VALUES ('villanos'),
-VALUES ('antiheroes'),
-VALUES ('gigantes'),
-VALUES ('humanoides'),
-VALUES ('spiderman'),
-VALUES ('nathaniel richards'),
-VALUES ('reed richards')
+('demonios'),
+ ('mitologicos'),
+ ('androides'),
+ ('monjes'),
+ ('heroes'),
+ ('villanos'),
+('antiheroes'),
+('gigantes'),
+ ('humanoides'),
+ ('spiderman'),
+ ('nathaniel richards'),
+('reed richards')
 ;
 
 
@@ -379,7 +379,7 @@ VALUES
 (1,NULL,14),
 (1,NULL,15),
 (1,NULL,17),
-(1,NULL,18),
+(1,NULL,18)
 
 
 ;
@@ -453,6 +453,7 @@ LOCK TABLES `Enfrentamiento` WRITE;
 /*!40000 ALTER TABLE `Enfrentamiento` DISABLE KEYS */;
 INSERT INTO `Enfrentamiento` VALUES 
 
+-- evento 1
 -- etapa 1
 
 -- grupo 1 (ganador 1,3)
@@ -470,7 +471,30 @@ INSERT INTO `Enfrentamiento` VALUES
 (3,5,'2018-12-31 10:29:23','2',5,'00:15:32'),
 
 -- etapa 3 (ganador 6)
-(6,5,'2019-01-02 10:30:23','3',6,'00:58:51');
+(6,5,'2019-01-02 10:30:23','3',6,'00:58:51'),
+
+-- evento 2
+-- etapa 1
+
+-- grupo 1 (ganador 1,3)
+(7,8,'2019-03-28 03:29:23','1',8,'00:18:40'),
+(7,9,'2019-03-29 03:29:23','1',7,'00:36:40'),
+(9,8,'2019-03-30 09:29:23','1',8,'00:23:22'), 
+
+
+-- grupo 2  (ganador 6,5)
+(10,11,'2019-03-28 03:29:23','1',11,'00:26:14'),
+(10,12,'2019-03-29 03:29:23','1',12,'00:23:05'),
+(11,12,'2019-03-30 09:29:23','1',NULL,'01:15:30'),
+
+-- etapa 2 (ganador 6,5)
+(7,11,'2019-03-31 10:29:23','2',11,'00:19:51'),
+(8,12,'2019-03-31 10:29:23','2',12,'00:13:33'),
+
+-- etapa 3 (ganador 6)
+(12,11,'2019-04-02 10:30:23','3',12,'00:53:50');
+
+
 
 
 
@@ -498,7 +522,12 @@ CREATE TABLE `Evento` (
 
 LOCK TABLES `Evento` WRITE;
 /*!40000 ALTER TABLE `Evento` DISABLE KEYS */;
-INSERT INTO `Evento` VALUES (1,'2018-12-27 22:23:54');
+INSERT INTO `Evento` VALUES 
+
+(1,'2018-12-27 22:23:54'),
+(2,'2019-02-27 22:23:54')
+;
+
 /*!40000 ALTER TABLE `Evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -583,12 +612,25 @@ CREATE TABLE `Inscrito` (
 
 LOCK TABLES `Inscrito` WRITE;
 /*!40000 ALTER TABLE `Inscrito` DISABLE KEYS */;
-INSERT INTO `Inscrito` VALUES (1,1,3,1,20),
+INSERT INTO `Inscrito` VALUES 
+-- evento 1
+(1,1,3,1,20),
 (2,1,NULL,1,33),
 (3,1,3,1,34),
 (4,1,NULL,2,44),
 (5,1,2,2,51),
-(6,1,4,2,56);
+(6,1,4,2,56),
+
+-- evento 2
+(7,2,2,3,15),
+(8,2,4,3,31),
+(9,2,0,3,34),
+(10,2,0,4,43),
+(11,2,4,4,51),
+(12,2,4,4,56)
+
+
+;
 
 /*!40000 ALTER TABLE `Inscrito` ENABLE KEYS */;
 UNLOCK TABLES;

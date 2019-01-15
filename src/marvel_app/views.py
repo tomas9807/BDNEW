@@ -24,8 +24,10 @@ def get_inscrito_as_pc(inscrito_id):
 
 
 @app.route('/')
+@app.route('/top')
 def home():
-    return render_template('base.html')
+
+    return render_template('top.html')
 
 categorias_default = (
     'dioses',
